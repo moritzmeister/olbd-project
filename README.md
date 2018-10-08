@@ -1,5 +1,5 @@
 # olbd-project
 
-*Authors:
-  *Moritz Meister (moritzmeister)
-  *Jacqueline Neef (jackiefeen)
+Authors:
+Moritz Meister (moritzmeister)
+Jacqueline Neef (jackiefeen)
