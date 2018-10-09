@@ -1,0 +1,65 @@
+SPARQL Queries:
+
+--> retrieve Madrid
+SELECT ?city where
+{
+?city rdfs:label "Madrid"@en.
+?city a <http://dbpedia.org/ontology/PopulatedPlace> .
+}
+
+PREFIX ont: <http://dbpedia.org/ontology/>
+
+SELECT ?city where
+{
+?city rdfs:label "Madrid"@en.
+?city a ont:PopulatedPlace .
+}
+
+--> get all the properties of the entity "Madrid"
+PREFIX ont: <http://dbpedia.org/ontology/>
+
+SELECT DISTINCT * where
+{
+?city rdfs:label "Madrid"@en.
+?city a ont:PopulatedPlace.
+?city ?has [].
+}
+
+--> get the instance of museo del prado
+SELECT * where
+{
+?museum rdfs:label "Museo del Prado"@es.
+}
+
+--> get the museums of Madrid
+SELECT DISTINCT * where
+{
+?museum a <http://dbpedia.org/ontology/Museum>.
+?museum <http://dbpedia.org/ontology/location> ?city.
+?city rdfs:label "Madrid"@en.
+}
+
+--> get the predicates of the museums we have found so far in Madrid
+SELECT * where
+{
+?museum a <http://dbpedia.org/ontology/Museum>.
+?museum <http://dbpedia.org/ontology/location> ?city.
+?city rdfs:label "Madrid"@en.
+?museum ?has ?property.
+FILTER (?has != rdf:type)
+}
+
+--> different ontology: purl
+SELECT * where
+{
+?museum <http://purl.org/dc/terms/subject> <http://dbpedia.org/resource/Category:Museums_in_Madrid>
+
+}
+
+--> get all museums that are part of "El Paseo del Prado"
+
+SELECT * where
+{
+?museum <http://purl.org/dc/terms/subject> <http://dbpedia.org/resource/Category:Paseo_del_Prado>
+
+}
