@@ -1,6 +1,8 @@
 # olbd-project
 
 <p align="left">
-Authors: [@moritzmeister](https://github.com/moritzmeister)[@jackiefeen](https://github.com/jackiefeen)
+Authors:
+  <br>[@moritzmeister](https://github.com/moritzmeister)
+  <br>[@jackiefeen](https://github.com/jackiefeen)
 </p>
 
