@@ -1,5 +1,6 @@
 # olbd-project
 
-Authors:
-Moritz Meister (moritzmeister)
-Jacqueline Neef (jackiefeen)
+<p align="center">
+Authors: [@moritzmeister](https://github.com/moritzmeister)[@jackiefeen](https://github.com/jackiefeen)
+</p>
+
