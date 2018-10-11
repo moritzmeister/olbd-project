@@ -18,15 +18,58 @@
                             rdfs:range <http://schema.org/PostalAddress> .
 
 
+###  http://schema.org/geo
+<http://schema.org/geo> rdf:type owl:ObjectProperty ;
+                        rdfs:domain <http://schema.org/CivicStructure> ;
+                        rdfs:range <http://schema.org/GeoCoordinates> .
+
+
 ###  http://www.semanticweb.org/jacquelineneef/ontologies/olbd-project/reachableby
 <http://www.semanticweb.org/jacquelineneef/ontologies/olbd-project/reachableby> rdf:type owl:ObjectProperty ;
                                                                                 rdfs:domain <http://schema.org/CivicStructure> ;
                                                                                 rdfs:range <https://www.wikidata.org/wiki/Q719456> .
 
 
+###  http://www.w3.org/2002/07/owl#equivalentClass
+owl:equivalentClass rdf:type owl:ObjectProperty ;
+                    rdfs:domain <http://dbpedia.org/ontology/Place> ;
+                    rdfs:range <http://dbpedia.org/ontology/Place> .
+
+
 #################################################################
 #    Data properties
 #################################################################
+
+###  http://schema.org/addressLocality
+<http://schema.org/addressLocality> rdf:type owl:DatatypeProperty ;
+                                    rdfs:domain <http://schema.org/PostalAddress> ;
+                                    rdfs:range xsd:string .
+
+
+###  http://schema.org/description
+<http://schema.org/description> rdf:type owl:DatatypeProperty ;
+                                rdfs:domain <http://schema.org/CivicStructure> ;
+                                rdfs:range xsd:string .
+
+
+###  http://schema.org/faxNumber
+<http://schema.org/faxNumber> rdf:type owl:DatatypeProperty ;
+                              rdfs:domain <http://schema.org/CivicStructure> ;
+                              rdfs:range xsd:string .
+
+
+###  http://schema.org/latitude
+<http://schema.org/latitude> rdf:type owl:DatatypeProperty ;
+                             rdfs:domain <http://schema.org/GeoCoordinates> ;
+                             rdfs:range xsd:double .
+
+
+###  http://schema.org/longitude
+<http://schema.org/longitude> rdf:type owl:DatatypeProperty ;
+                              rdfs:subPropertyOf owl:topDataProperty ;
+                              rdfs:domain <http://schema.org/GeoCoordinates> ;
+                              rdfs:range xsd:double .
+
 
 ###  http://schema.org/name
 <http://schema.org/name> rdf:type owl:DatatypeProperty ;
@@ -40,13 +83,44 @@
                                  rdfs:range xsd:string .
 
 
+###  http://schema.org/postalCode
+<http://schema.org/postalCode> rdf:type owl:DatatypeProperty ;
+                               rdfs:domain <http://schema.org/PostalAddress> ;
+                               rdfs:range xsd:string .
+
+
+###  http://schema.org/sameAs
+<http://schema.org/sameAs> rdf:type owl:DatatypeProperty ;
+                           rdfs:domain <http://schema.org/CivicStructure> ;
+                           rdfs:range xsd:anyURI .
+
+
+###  http://schema.org/streetAddress
+<http://schema.org/streetAddress> rdf:type owl:DatatypeProperty ;
+                                  rdfs:domain <http://schema.org/PostalAddress> ;
+                                  rdfs:range xsd:string .
+
+
+###  http://schema.org/telephone
+<http://schema.org/telephone> rdf:type owl:DatatypeProperty ;
+                              rdfs:domain <http://schema.org/CivicStructure> ;
+                              rdfs:range xsd:string .
+
+
+###  http://www.w3.org/2006/vcard/ns#email
+<http://www.w3.org/2006/vcard/ns#email> rdf:type owl:DatatypeProperty ;
+                                        rdfs:domain <http://schema.org/CivicStructure> ;
+                                        rdfs:range xsd:string .
+
+
 #################################################################
 #    Classes
 #################################################################
 
 ###  http://dbpedia.org/ontology/Monument
 <http://dbpedia.org/ontology/Monument> rdf:type owl:Class ;
-                                       rdfs:subClassOf <http://dbpedia.org/ontology/Place> .
+                                       rdfs:subClassOf <http://dbpedia.org/ontology/Place> ;
+                                       owl:disjointWith <http://schema.org/Museum> .
 
 
 ###  http://dbpedia.org/ontology/Place
