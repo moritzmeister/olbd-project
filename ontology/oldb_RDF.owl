@@ -1,0 +1,274 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://www.semanticweb.org/jacquelineneef/ontologies/olbd-project#"
+     xml:base="http://www.semanticweb.org/jacquelineneef/ontologies/olbd-project"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
+    <owl:Ontology rdf:about="http://www.semanticweb.org/jacquelineneef/ontologies/olbd-project"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://schema.org/address -->
+
+    <owl:ObjectProperty rdf:about="http://schema.org/address">
+        <rdfs:domain rdf:resource="http://schema.org/GeoCoordinates"/>
+        <rdfs:range rdf:resource="http://schema.org/PostalAddress"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://schema.org/geo -->
+
+    <owl:ObjectProperty rdf:about="http://schema.org/geo">
+        <rdfs:domain rdf:resource="http://schema.org/CivicStructure"/>
+        <rdfs:range rdf:resource="http://schema.org/GeoCoordinates"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/jacquelineneef/ontologies/olbd-project/reachableby -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/jacquelineneef/ontologies/olbd-project/reachableby">
+        <rdfs:domain rdf:resource="http://schema.org/CivicStructure"/>
+        <rdfs:range rdf:resource="https://www.wikidata.org/wiki/Q719456"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.w3.org/2002/07/owl#equivalentClass -->
+
+    <owl:ObjectProperty rdf:about="http://www.w3.org/2002/07/owl#equivalentClass">
+        <rdfs:domain rdf:resource="http://dbpedia.org/ontology/Place"/>
+        <rdfs:range rdf:resource="http://dbpedia.org/ontology/Place"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://schema.org/addressLocality -->
+
+    <owl:DatatypeProperty rdf:about="http://schema.org/addressLocality">
+        <rdfs:domain rdf:resource="http://schema.org/PostalAddress"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://schema.org/description -->
+
+    <owl:DatatypeProperty rdf:about="http://schema.org/description">
+        <rdfs:domain rdf:resource="http://schema.org/CivicStructure"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://schema.org/faxNumber -->
+
+    <owl:DatatypeProperty rdf:about="http://schema.org/faxNumber">
+        <rdfs:domain rdf:resource="http://schema.org/CivicStructure"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://schema.org/latitude -->
+
+    <owl:DatatypeProperty rdf:about="http://schema.org/latitude">
+        <rdfs:domain rdf:resource="http://schema.org/GeoCoordinates"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://schema.org/longitude -->
+
+    <owl:DatatypeProperty rdf:about="http://schema.org/longitude">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:domain rdf:resource="http://schema.org/GeoCoordinates"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://schema.org/name -->
+
+    <owl:DatatypeProperty rdf:about="http://schema.org/name">
+        <rdfs:domain rdf:resource="http://schema.org/CivicStructure"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://schema.org/openingHours -->
+
+    <owl:DatatypeProperty rdf:about="http://schema.org/openingHours">
+        <rdfs:domain rdf:resource="http://schema.org/CivicStructure"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://schema.org/postalCode -->
+
+    <owl:DatatypeProperty rdf:about="http://schema.org/postalCode">
+        <rdfs:domain rdf:resource="http://schema.org/PostalAddress"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://schema.org/sameAs -->
+
+    <owl:DatatypeProperty rdf:about="http://schema.org/sameAs">
+        <rdfs:domain rdf:resource="http://schema.org/CivicStructure"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#anyURI"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://schema.org/streetAddress -->
+
+    <owl:DatatypeProperty rdf:about="http://schema.org/streetAddress">
+        <rdfs:domain rdf:resource="http://schema.org/PostalAddress"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://schema.org/telephone -->
+
+    <owl:DatatypeProperty rdf:about="http://schema.org/telephone">
+        <rdfs:domain rdf:resource="http://schema.org/CivicStructure"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.w3.org/2006/vcard/ns#email -->
+
+    <owl:DatatypeProperty rdf:about="http://www.w3.org/2006/vcard/ns#email">
+        <rdfs:domain rdf:resource="http://schema.org/CivicStructure"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://dbpedia.org/ontology/Monument -->
+
+    <owl:Class rdf:about="http://dbpedia.org/ontology/Monument">
+        <rdfs:subClassOf rdf:resource="http://dbpedia.org/ontology/Place"/>
+        <owl:disjointWith rdf:resource="http://schema.org/Museum"/>
+    </owl:Class>
+    
+
+
+    <!-- http://dbpedia.org/ontology/Place -->
+
+    <owl:Class rdf:about="http://dbpedia.org/ontology/Place">
+        <owl:equivalentClass rdf:resource="http://schema.org/Place"/>
+    </owl:Class>
+    
+
+
+    <!-- http://schema.org/CivicStructure -->
+
+    <owl:Class rdf:about="http://schema.org/CivicStructure">
+        <rdfs:subClassOf rdf:resource="http://schema.org/Place"/>
+    </owl:Class>
+    
+
+
+    <!-- http://schema.org/GeoCoordinates -->
+
+    <owl:Class rdf:about="http://schema.org/GeoCoordinates"/>
+    
+
+
+    <!-- http://schema.org/Museum -->
+
+    <owl:Class rdf:about="http://schema.org/Museum">
+        <rdfs:subClassOf rdf:resource="http://schema.org/CivicStructure"/>
+    </owl:Class>
+    
+
+
+    <!-- http://schema.org/Place -->
+
+    <owl:Class rdf:about="http://schema.org/Place"/>
+    
+
+
+    <!-- http://schema.org/PostalAddress -->
+
+    <owl:Class rdf:about="http://schema.org/PostalAddress"/>
+    
+
+
+    <!-- https://www.wikidata.org/wiki/Q55488 -->
+
+    <owl:Class rdf:about="https://www.wikidata.org/wiki/Q55488">
+        <rdfs:subClassOf rdf:resource="https://www.wikidata.org/wiki/Q719456"/>
+    </owl:Class>
+    
+
+
+    <!-- https://www.wikidata.org/wiki/Q719456 -->
+
+    <owl:Class rdf:about="https://www.wikidata.org/wiki/Q719456"/>
+    
+
+
+    <!-- https://www.wikidata.org/wiki/Q928830 -->
+
+    <owl:Class rdf:about="https://www.wikidata.org/wiki/Q928830">
+        <rdfs:subClassOf rdf:resource="https://www.wikidata.org/wiki/Q55488"/>
+    </owl:Class>
+    
+
+
+    <!-- https://www.wikidata.org/wiki/Q953806 -->
+
+    <owl:Class rdf:about="https://www.wikidata.org/wiki/Q953806">
+        <rdfs:subClassOf rdf:resource="https://www.wikidata.org/wiki/Q719456"/>
+    </owl:Class>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 4.5.6.2018-09-06T00:27:41Z) https://github.com/owlcs/owlapi -->
+
