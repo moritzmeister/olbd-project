@@ -1,6 +1,6 @@
 # Hands-on assignment 1 - Self assessment#
 
-##Checklist##
+## Checklist ##
 
 **The “README.md” file:**
 - OK: Includes the names and GitHub users of all the member of the group
