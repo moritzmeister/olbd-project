@@ -1,6 +1,6 @@
 # Hands-on assignment 2 - Self assessment#
 
-##Checklist##
+## Checklist ##
 
 **The “analysis.html” file:**
 - OK: Includes the potential license of the dataset to be generated
