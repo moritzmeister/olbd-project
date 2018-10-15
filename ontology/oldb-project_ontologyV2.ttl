@@ -1,0 +1,181 @@
+@prefix : <http://www.semanticweb.org/jacquelineneef/ontologies/olbd-project#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://www.semanticweb.org/museumsandmonumentsmadrid> .
+
+<http://www.semanticweb.org/museumsandmonumentsmadrid> rdf:type owl:Ontology .
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://schema.org/address
+<http://schema.org/address> rdf:type owl:ObjectProperty ;
+                            rdfs:domain <http://schema.org/GeoCoordinates> ;
+                            rdfs:range <http://schema.org/PostalAddress> .
+
+
+###  http://schema.org/arrivalStation
+<http://schema.org/arrivalStation> rdf:type owl:ObjectProperty ;
+                                   rdfs:domain <http://schema.org/TrainTrip> ;
+                                   rdfs:range <http://schema.org/TrainStation> .
+
+
+###  http://schema.org/geo
+<http://schema.org/geo> rdf:type owl:ObjectProperty ;
+                        rdfs:domain <http://schema.org/CivicStructure> ;
+                        rdfs:range <http://schema.org/GeoCoordinates> .
+
+
+###  http://www.semanticweb.org/museumsandmonumentsmadrid/reachableby
+<http://www.semanticweb.org/museumsandmonumentsmadrid/reachableby> rdf:type owl:ObjectProperty ;
+                                                                   rdfs:domain <http://schema.org/CivicStructure> ;
+                                                                   rdfs:range <http://www.semanticweb.org/museumsandmonumentsmadrid/PublicTransport> .
+
+
+###  http://www.w3.org/2002/07/owl#equivalentClass
+owl:equivalentClass rdf:type owl:ObjectProperty .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  http://schema.org/addressLocality
+<http://schema.org/addressLocality> rdf:type owl:DatatypeProperty ;
+                                    rdfs:domain <http://schema.org/PostalAddress> ;
+                                    rdfs:range xsd:string .
+
+
+###  http://schema.org/busNumber
+<http://schema.org/busNumber> rdf:type owl:DatatypeProperty ;
+                              rdfs:domain <http://schema.org/BusTrip> ;
+                              rdfs:range xsd:integer .
+
+
+###  http://schema.org/description
+<http://schema.org/description> rdf:type owl:DatatypeProperty ;
+                                rdfs:domain <http://schema.org/CivicStructure> ;
+                                rdfs:range xsd:string .
+
+
+###  http://schema.org/faxNumber
+<http://schema.org/faxNumber> rdf:type owl:DatatypeProperty ;
+                              rdfs:domain <http://schema.org/CivicStructure> ;
+                              rdfs:range xsd:string .
+
+
+###  http://schema.org/latitude
+<http://schema.org/latitude> rdf:type owl:DatatypeProperty ;
+                             rdfs:domain <http://schema.org/GeoCoordinates> ;
+                             rdfs:range xsd:double .
+
+
+###  http://schema.org/longitude
+<http://schema.org/longitude> rdf:type owl:DatatypeProperty ;
+                              rdfs:subPropertyOf owl:topDataProperty ;
+                              rdfs:domain <http://schema.org/GeoCoordinates> ;
+                              rdfs:range xsd:double .
+
+
+###  http://schema.org/name
+<http://schema.org/name> rdf:type owl:DatatypeProperty ;
+                         rdfs:range xsd:string .
+
+
+###  http://schema.org/openingHours
+<http://schema.org/openingHours> rdf:type owl:DatatypeProperty ;
+                                 rdfs:domain <http://schema.org/CivicStructure> ;
+                                 rdfs:range xsd:string .
+
+
+###  http://schema.org/postalCode
+<http://schema.org/postalCode> rdf:type owl:DatatypeProperty ;
+                               rdfs:domain <http://schema.org/PostalAddress> ;
+                               rdfs:range xsd:string .
+
+
+###  http://schema.org/streetAddress
+<http://schema.org/streetAddress> rdf:type owl:DatatypeProperty ;
+                                  rdfs:domain <http://schema.org/PostalAddress> ;
+                                  rdfs:range xsd:string .
+
+
+###  http://schema.org/telephone
+<http://schema.org/telephone> rdf:type owl:DatatypeProperty ;
+                              rdfs:domain <http://schema.org/CivicStructure> ;
+                              rdfs:range xsd:string .
+
+
+###  http://schema.org/trainNumber
+<http://schema.org/trainNumber> rdf:type owl:DatatypeProperty ;
+                                rdfs:domain <http://schema.org/TrainTrip> ;
+                                rdfs:range xsd:integer .
+
+
+###  http://www.semanticweb.org/museumsandmonumentsmadrid/hasWebpage
+<http://www.semanticweb.org/museumsandmonumentsmadrid/hasWebpage> rdf:type owl:DatatypeProperty ;
+                                                                  rdfs:domain <http://schema.org/CivicStructure> ;
+                                                                  rdfs:range xsd:string .
+
+
+###  http://www.w3.org/2006/vcard/ns#email
+<http://www.w3.org/2006/vcard/ns#email> rdf:type owl:DatatypeProperty ;
+                                        rdfs:domain <http://schema.org/CivicStructure> ;
+                                        rdfs:range xsd:string .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://schema.org/BusTrip
+<http://schema.org/BusTrip> rdf:type owl:Class ;
+                            rdfs:subClassOf <http://www.semanticweb.org/museumsandmonumentsmadrid/PublicTransport> .
+
+
+###  http://schema.org/CivicStructure
+<http://schema.org/CivicStructure> rdf:type owl:Class ;
+                                   rdfs:subClassOf <http://schema.org/Place> .
+
+
+###  http://schema.org/GeoCoordinates
+<http://schema.org/GeoCoordinates> rdf:type owl:Class .
+
+
+###  http://schema.org/Museum
+<http://schema.org/Museum> rdf:type owl:Class ;
+                           rdfs:subClassOf <http://schema.org/CivicStructure> .
+
+
+###  http://schema.org/Place
+<http://schema.org/Place> rdf:type owl:Class .
+
+
+###  http://schema.org/PostalAddress
+<http://schema.org/PostalAddress> rdf:type owl:Class .
+
+
+###  http://schema.org/TrainStation
+<http://schema.org/TrainStation> rdf:type owl:Class ;
+                                 rdfs:subClassOf <http://www.semanticweb.org/museumsandmonumentsmadrid/PublicTransport> .
+
+
+###  http://schema.org/TrainTrip
+<http://schema.org/TrainTrip> rdf:type owl:Class ;
+                              rdfs:subClassOf <http://www.semanticweb.org/museumsandmonumentsmadrid/PublicTransport> .
+
+
+###  http://www.semanticweb.org/museumsandmonumentsmadrid/Monument
+<http://www.semanticweb.org/museumsandmonumentsmadrid/Monument> rdf:type owl:Class ;
+                                                                rdfs:subClassOf <http://schema.org/CivicStructure> .
+
+
+###  http://www.semanticweb.org/museumsandmonumentsmadrid/PublicTransport
+<http://www.semanticweb.org/museumsandmonumentsmadrid/PublicTransport> rdf:type owl:Class .
+
+
+###  Generated by the OWL API (version 4.5.6.2018-09-06T00:27:41Z) https://github.com/owlcs/owlapi
