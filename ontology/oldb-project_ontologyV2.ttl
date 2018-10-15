@@ -50,6 +50,12 @@ owl:equivalentClass rdf:type owl:ObjectProperty .
                                     rdfs:range xsd:string .
 
 
+###  http://schema.org/addressRegion
+<http://schema.org/addressRegion> rdf:type owl:DatatypeProperty ;
+                                  rdfs:domain <http://schema.org/PostalAddress> ;
+                                  rdfs:range xsd:string .
+
+
 ###  http://schema.org/busNumber
 <http://schema.org/busNumber> rdf:type owl:DatatypeProperty ;
                               rdfs:domain <http://schema.org/BusTrip> ;
@@ -114,6 +120,12 @@ owl:equivalentClass rdf:type owl:ObjectProperty .
 <http://schema.org/trainNumber> rdf:type owl:DatatypeProperty ;
                                 rdfs:domain <http://schema.org/TrainTrip> ;
                                 rdfs:range xsd:integer .
+
+
+###  http://www.semanticweb.org/museumsandmonumentsmadrid/barrio
+<http://www.semanticweb.org/museumsandmonumentsmadrid/barrio> rdf:type owl:DatatypeProperty ;
+                                                              rdfs:domain <http://schema.org/PostalAddress> ;
+                                                              rdfs:range xsd:string .
 
 
 ###  http://www.semanticweb.org/museumsandmonumentsmadrid/hasWebpage

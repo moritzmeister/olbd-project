@@ -1,0 +1,23 @@
+replace(value, /[ń]/, "n")
+
+replace(value, /.*(?:lunes|martes|miércoles|jueves|viernes|sábado|domingo)/, )
+value.find(/.*(?:lunes|martes|miércoles|jueves|viernes|sábado|domingo)/)
+value.find(/ de (?:\d|[01]\d|2[0-3]) a (?:\d|[01]\d|2[0-3])\d horas/)
+
+value.find(/(?:\d|[01]\d|2[0-3]) a (?:\d|[01]\d|2[0-3])\d horas/)[1]
+
+
+[0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]
+value.find(/de (?:lunes|martes|miércoles|jueves|viernes|sábado|domingo|sábados|domingos) a (?:lunes|martes|miércoles|jueves|viernes|sábado|domingo|sábados|domingos) de (?:\d|[01]\d|2[0-3]):[0-5]\d) a (?:\d|[01]\d|2[0-3])\d horas /)
+
+Full hours
+value.find(/de (?:lunes|martes|miércoles|jueves|viernes|sábado|domingo|sábados|domingos) a (?:lunes|martes|miércoles|jueves|viernes|sábado|domingo|sábados|domingos) de (?:\d|[01]\d|2[0-3]) a (?:\d|[01]\d|2[0-3])\d horas /)
+
+half hours
+value.find(/de (?:lunes|martes|miércoles|jueves|viernes|sábado|domingo|sábados|domingos) a (?:lunes|martes|miércoles|jueves|viernes|sábado|domingo|sábados|domingos) de (?:\d|[01]\d|2[0-3]):[0-5]\d a (?:\d|[01]\d|2[0-3]):[0-5]\d horas /)
+
+
+value.find(/de (?:lunes|martes|miércoles|jueves|viernes|sábado|domingo|sábados|domingos) a (?:lunes|martes|miércoles|jueves|viernes|sábado|domingo|sábados|domingos) de .* a .* horas /)
+
+more general:
+value.find(/(?:lunes|martes|miércoles|jueves|viernes|sábado|domingo|sábados|domingos) .{1,2} (?:lunes|martes|miércoles|jueves|viernes|sábado|domingo|sábados|domingos) de .{1,5} a .{1,5} horas/)

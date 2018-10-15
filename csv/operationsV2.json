@@ -1,0 +1,1153 @@
+[
+  {
+    "op": "core/column-removal",
+    "description": "Remove column EQUIPAMIENTO",
+    "columnName": "EQUIPAMIENTO"
+  },
+  {
+    "op": "core/column-removal",
+    "description": "Remove column DESCRIPCION",
+    "columnName": "DESCRIPCION"
+  },
+  {
+    "op": "core/column-removal",
+    "description": "Remove column ACCESIBILIDAD",
+    "columnName": "ACCESIBILIDAD"
+  },
+  {
+    "op": "core/column-removal",
+    "description": "Remove column TIPO-NUM",
+    "columnName": "TIPO-NUM"
+  },
+  {
+    "op": "core/column-removal",
+    "description": "Remove column PLANTA",
+    "columnName": "PLANTA"
+  },
+  {
+    "op": "core/column-removal",
+    "description": "Remove column PUERTA",
+    "columnName": "PUERTA"
+  },
+  {
+    "op": "core/column-removal",
+    "description": "Remove column ESCALERAS",
+    "columnName": "ESCALERAS"
+  },
+  {
+    "op": "core/column-removal",
+    "description": "Remove column ORIENTACION",
+    "columnName": "ORIENTACION"
+  },
+  {
+    "op": "core/column-removal",
+    "description": "Remove column PROVINCIA",
+    "columnName": "PROVINCIA"
+  },
+  {
+    "op": "core/column-removal",
+    "description": "Remove column COORDENADA-X",
+    "columnName": "COORDENADA-X"
+  },
+  {
+    "op": "core/column-removal",
+    "description": "Remove column COORDENADA-Y",
+    "columnName": "COORDENADA-Y"
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column TYPE",
+    "engineConfig": {
+      "mode": "row-based",
+      "facets": []
+    },
+    "columnName": "TYPE",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "Mueso"
+        ],
+        "to": "Museo"
+      }
+    ]
+  },
+  {
+    "op": "rdf-extension/save-rdf-schema",
+    "description": "Save RDF schema skeleton",
+    "schema": {
+      "baseUri": "http://www.semanticweb.org/museumsandmonumentsmadrid",
+      "prefixes": [
+        {
+          "name": "schema",
+          "uri": "http://schema.org/"
+        },
+        {
+          "name": "rdf",
+          "uri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+        },
+        {
+          "name": "owl",
+          "uri": "http://www.w3.org/2002/07/owl#"
+        },
+        {
+          "name": "xsd",
+          "uri": "http://www.w3.org/2001/XMLSchema#"
+        },
+        {
+          "name": "mam",
+          "uri": "http://www.semanticweb.org/museumsandmonumentsmadrid/"
+        },
+        {
+          "name": "rdfs",
+          "uri": "http://www.w3.org/2000/01/rdf-schema#"
+        },
+        {
+          "name": "foaf",
+          "uri": "http://xmlns.com/foaf/0.1/"
+        }
+      ],
+      "rootNodes": [
+        {
+          "nodeType": "cell-as-resource",
+          "expression": "\"CivicStructure/\"+replaceChars(value, \" \", \"\")",
+          "isRowNumberCell": false,
+          "columnName": "NOMBRE",
+          "rdfTypes": [
+            {
+              "uri": "http://schema.org/CivicStructure",
+              "curie": "schema:CivicStructure"
+            }
+          ],
+          "links": []
+        },
+        {
+          "nodeType": "cell-as-resource",
+          "expression": "value",
+          "isRowNumberCell": true,
+          "rdfTypes": [],
+          "links": []
+        },
+        {
+          "nodeType": "cell-as-resource",
+          "expression": "value",
+          "isRowNumberCell": true,
+          "rdfTypes": [],
+          "links": []
+        },
+        {
+          "nodeType": "cell-as-resource",
+          "expression": "value",
+          "isRowNumberCell": true,
+          "rdfTypes": [],
+          "links": []
+        },
+        {
+          "nodeType": "cell-as-resource",
+          "expression": "value",
+          "isRowNumberCell": true,
+          "rdfTypes": [],
+          "links": []
+        },
+        {
+          "nodeType": "cell-as-resource",
+          "expression": "value",
+          "isRowNumberCell": true,
+          "rdfTypes": [],
+          "links": []
+        }
+      ]
+    }
+  },
+  {
+    "op": "core/column-addition",
+    "description": "Create column URIname at index 2 based on column NOMBRE using expression grel:replace(value, /[ó]/ ,\"o\")\nreplace(value, /[é]/ ,\"e\")\nreplace(value, /[ñ]/ ,\"n\")\nreplace(value, /[ń]/ ,\"n\")\nreplace(value, /[í]/ ,\"i\")",
+    "engineConfig": {
+      "mode": "row-based",
+      "facets": []
+    },
+    "newColumnName": "URIname",
+    "columnInsertIndex": 2,
+    "baseColumnName": "NOMBRE",
+    "expression": "grel:replace(value, /[ó]/ ,\"o\")\nreplace(value, /[é]/ ,\"e\")\nreplace(value, /[ñ]/ ,\"n\")\nreplace(value, /[ń]/ ,\"n\")\nreplace(value, /[í]/ ,\"i\")",
+    "onError": "set-to-blank"
+  },
+  {
+    "op": "core/text-transform",
+    "description": "Text transform on cells in column URIname using expression grel:strip(value)",
+    "engineConfig": {
+      "mode": "row-based",
+      "facets": []
+    },
+    "columnName": "URIname",
+    "expression": "grel:strip(value)",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10
+  },
+  {
+    "op": "core/text-transform",
+    "description": "Text transform on cells in column URIname using expression grel:replace(value, /\\([A-Za-z]*\\)/, \"\")",
+    "engineConfig": {
+      "mode": "row-based",
+      "facets": []
+    },
+    "columnName": "URIname",
+    "expression": "grel:replace(value, /\\([A-Za-z]*\\)/, \"\")",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10
+  },
+  {
+    "op": "rdf-extension/save-rdf-schema",
+    "description": "Save RDF schema skeleton",
+    "schema": {
+      "baseUri": "http://www.semanticweb.org/museumsandmonumentsmadrid",
+      "prefixes": [
+        {
+          "name": "schema",
+          "uri": "http://schema.org/"
+        },
+        {
+          "name": "rdf",
+          "uri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+        },
+        {
+          "name": "owl",
+          "uri": "http://www.w3.org/2002/07/owl#"
+        },
+        {
+          "name": "xsd",
+          "uri": "http://www.w3.org/2001/XMLSchema#"
+        },
+        {
+          "name": "mam",
+          "uri": "http://www.semanticweb.org/museumsandmonumentsmadrid/"
+        },
+        {
+          "name": "rdfs",
+          "uri": "http://www.w3.org/2000/01/rdf-schema#"
+        },
+        {
+          "name": "foaf",
+          "uri": "http://xmlns.com/foaf/0.1/"
+        }
+      ],
+      "rootNodes": [
+        {
+          "nodeType": "cell-as-resource",
+          "expression": "\"CivicStructure/\"+replaceChars(value, \" \", \"\")",
+          "isRowNumberCell": false,
+          "columnName": "URIname",
+          "rdfTypes": [
+            {
+              "uri": "http://schema.org/CivicStructure",
+              "curie": "schema:CivicStructure"
+            }
+          ],
+          "links": []
+        },
+        {
+          "nodeType": "cell-as-resource",
+          "expression": "value",
+          "isRowNumberCell": true,
+          "rdfTypes": [],
+          "links": []
+        },
+        {
+          "nodeType": "cell-as-resource",
+          "expression": "value",
+          "isRowNumberCell": true,
+          "rdfTypes": [],
+          "links": []
+        },
+        {
+          "nodeType": "cell-as-resource",
+          "expression": "value",
+          "isRowNumberCell": true,
+          "rdfTypes": [],
+          "links": []
+        },
+        {
+          "nodeType": "cell-as-resource",
+          "expression": "value",
+          "isRowNumberCell": true,
+          "rdfTypes": [],
+          "links": []
+        },
+        {
+          "nodeType": "cell-as-resource",
+          "expression": "value",
+          "isRowNumberCell": true,
+          "rdfTypes": [],
+          "links": []
+        }
+      ]
+    }
+  },
+  {
+    "op": "core/text-transform",
+    "description": "Text transform on cells in column URIname using expression value.trim()",
+    "engineConfig": {
+      "mode": "row-based",
+      "facets": []
+    },
+    "columnName": "URIname",
+    "expression": "value.trim()",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10
+  },
+  {
+    "op": "core/text-transform",
+    "description": "Text transform on cells in column URIname using expression grel:replace(value, /[í]/, \"i\")",
+    "engineConfig": {
+      "mode": "row-based",
+      "facets": [
+        {
+          "omitError": false,
+          "expression": "grel:value.contains(\"í\")",
+          "selectBlank": false,
+          "selection": [
+            {
+              "v": {
+                "v": true,
+                "l": "true"
+              }
+            }
+          ],
+          "selectError": false,
+          "invert": false,
+          "name": "URIname",
+          "omitBlank": false,
+          "type": "list",
+          "columnName": "URIname"
+        }
+      ]
+    },
+    "columnName": "URIname",
+    "expression": "grel:replace(value, /[í]/, \"i\")",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10
+  },
+  {
+    "op": "core/text-transform",
+    "description": "Text transform on cells in column URIname using expression grel:replace(value, /[ń]/, \"n\")",
+    "engineConfig": {
+      "mode": "row-based",
+      "facets": []
+    },
+    "columnName": "URIname",
+    "expression": "grel:replace(value, /[ń]/, \"n\")",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10
+  },
+  {
+    "op": "core/text-transform",
+    "description": "Text transform on cells in column URIname using expression grel:replace(value, /[á]/, \"a\")",
+    "engineConfig": {
+      "mode": "row-based",
+      "facets": []
+    },
+    "columnName": "URIname",
+    "expression": "grel:replace(value, /[á]/, \"a\")",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10
+  },
+  {
+    "op": "rdf-extension/save-rdf-schema",
+    "description": "Save RDF schema skeleton",
+    "schema": {
+      "baseUri": "http://www.semanticweb.org/museumsandmonumentsmadrid",
+      "prefixes": [
+        {
+          "name": "schema",
+          "uri": "http://schema.org/"
+        },
+        {
+          "name": "rdf",
+          "uri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+        },
+        {
+          "name": "owl",
+          "uri": "http://www.w3.org/2002/07/owl#"
+        },
+        {
+          "name": "xsd",
+          "uri": "http://www.w3.org/2001/XMLSchema#"
+        },
+        {
+          "name": "mam",
+          "uri": "http://www.semanticweb.org/museumsandmonumentsmadrid/"
+        },
+        {
+          "name": "rdfs",
+          "uri": "http://www.w3.org/2000/01/rdf-schema#"
+        },
+        {
+          "name": "foaf",
+          "uri": "http://xmlns.com/foaf/0.1/"
+        }
+      ],
+      "rootNodes": [
+        {
+          "nodeType": "cell-as-resource",
+          "expression": "\"CivicStructure/\"+replaceChars(value, \" \", \"\")",
+          "isRowNumberCell": false,
+          "columnName": "URIname",
+          "rdfTypes": [
+            {
+              "uri": "http://schema.org/CivicStructure",
+              "curie": "schema:CivicStructure"
+            }
+          ],
+          "links": [
+            {
+              "uri": "http://schema.org/name",
+              "curie": "schema:name",
+              "target": {
+                "nodeType": "cell-as-literal",
+                "expression": "value",
+                "isRowNumberCell": false,
+                "columnName": "NOMBRE"
+              }
+            }
+          ]
+        },
+        {
+          "nodeType": "cell-as-resource",
+          "expression": "value",
+          "isRowNumberCell": true,
+          "rdfTypes": [],
+          "links": []
+        },
+        {
+          "nodeType": "cell-as-resource",
+          "expression": "value",
+          "isRowNumberCell": true,
+          "rdfTypes": [],
+          "links": []
+        },
+        {
+          "nodeType": "cell-as-resource",
+          "expression": "value",
+          "isRowNumberCell": true,
+          "rdfTypes": [],
+          "links": []
+        },
+        {
+          "nodeType": "cell-as-resource",
+          "expression": "value",
+          "isRowNumberCell": true,
+          "rdfTypes": [],
+          "links": []
+        },
+        {
+          "nodeType": "cell-as-resource",
+          "expression": "value",
+          "isRowNumberCell": true,
+          "rdfTypes": [],
+          "links": []
+        }
+      ]
+    }
+  },
+  {
+    "op": "core/column-addition",
+    "description": "Create column Horario_Clean at index 5 based on column HORARIO using expression grel:value",
+    "engineConfig": {
+      "mode": "row-based",
+      "facets": []
+    },
+    "newColumnName": "Horario_Clean",
+    "columnInsertIndex": 5,
+    "baseColumnName": "HORARIO",
+    "expression": "grel:value",
+    "onError": "set-to-blank"
+  },
+  {
+    "op": "core/text-transform",
+    "description": "Text transform on cells in column Horario_Clean using expression grel:toLowercase(value)",
+    "engineConfig": {
+      "mode": "row-based",
+      "facets": []
+    },
+    "columnName": "Horario_Clean",
+    "expression": "grel:toLowercase(value)",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10
+  },
+  {
+    "op": "core/column-addition",
+    "description": "Create column Days at index 6 based on column Horario_Clean using expression grel:value.find(/de (?:lunes|martes|miércoles|jueves|viernes|sábado|domingo) a (?:lunes|martes|miércoles|jueves|viernes|sábado|domingo)/)",
+    "engineConfig": {
+      "mode": "row-based",
+      "facets": []
+    },
+    "newColumnName": "Days",
+    "columnInsertIndex": 6,
+    "baseColumnName": "Horario_Clean",
+    "expression": "grel:value.find(/de (?:lunes|martes|miércoles|jueves|viernes|sábado|domingo) a (?:lunes|martes|miércoles|jueves|viernes|sábado|domingo)/)",
+    "onError": "set-to-blank"
+  },
+  {
+    "op": "core/column-removal",
+    "description": "Remove column Days",
+    "columnName": "Days"
+  },
+  {
+    "op": "core/column-addition",
+    "description": "Create column Days at index 6 based on column Horario_Clean using expression grel:value.find(/de (?:lunes|martes|miércoles|jueves|viernes|sábado|domingo) a (?:lunes|martes|miércoles|jueves|viernes|sábado|domingo)/)",
+    "engineConfig": {
+      "mode": "row-based",
+      "facets": []
+    },
+    "newColumnName": "Days",
+    "columnInsertIndex": 6,
+    "baseColumnName": "Horario_Clean",
+    "expression": "grel:value.find(/de (?:lunes|martes|miércoles|jueves|viernes|sábado|domingo) a (?:lunes|martes|miércoles|jueves|viernes|sábado|domingo)/)",
+    "onError": "set-to-blank"
+  },
+  {
+    "op": "core/column-removal",
+    "description": "Remove column Days",
+    "columnName": "Days"
+  },
+  {
+    "op": "core/column-addition",
+    "description": "Create column Days at index 6 based on column Horario_Clean using expression grel:value",
+    "engineConfig": {
+      "mode": "row-based",
+      "facets": []
+    },
+    "newColumnName": "Days",
+    "columnInsertIndex": 6,
+    "baseColumnName": "Horario_Clean",
+    "expression": "grel:value",
+    "onError": "set-to-blank"
+  },
+  {
+    "op": "core/text-transform",
+    "description": "Text transform on cells in column Days using expression grel:value.find(/(?:lunes|martes|miércoles|jueves|viernes|sábado|domingo) a (?:lunes|martes|miércoles|jueves|viernes|sábado|domingo)/)",
+    "engineConfig": {
+      "mode": "row-based",
+      "facets": []
+    },
+    "columnName": "Days",
+    "expression": "grel:value.find(/(?:lunes|martes|miércoles|jueves|viernes|sábado|domingo) a (?:lunes|martes|miércoles|jueves|viernes|sábado|domingo)/)",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10
+  },
+  {
+    "op": "core/text-transform",
+    "description": "Text transform on cells in column Days using expression grel:value.find(/de (?:lunes|martes|miércoles|jueves|viernes|sábado|domingo) a (?:lunes|martes|miércoles|jueves|viernes|sábado|domingo)/)[0]",
+    "engineConfig": {
+      "mode": "row-based",
+      "facets": []
+    },
+    "columnName": "Days",
+    "expression": "grel:value.find(/de (?:lunes|martes|miércoles|jueves|viernes|sábado|domingo) a (?:lunes|martes|miércoles|jueves|viernes|sábado|domingo)/)[0]",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10
+  },
+  {
+    "op": "core/column-addition",
+    "description": "Create column Horario Hora at index 6 based on column Horario_Clean using expression grel:value",
+    "engineConfig": {
+      "mode": "row-based",
+      "facets": []
+    },
+    "newColumnName": "Horario Hora",
+    "columnInsertIndex": 6,
+    "baseColumnName": "Horario_Clean",
+    "expression": "grel:value",
+    "onError": "set-to-blank"
+  },
+  {
+    "op": "core/text-transform",
+    "description": "Text transform on cells in column Horario Hora using expression grel:value.find(/ de (?:\\d|[01]\\d|2[0-3]) a (?:\\d|[01]\\d|2[0-3])\\d horas/)[0]",
+    "engineConfig": {
+      "mode": "row-based",
+      "facets": []
+    },
+    "columnName": "Horario Hora",
+    "expression": "grel:value.find(/ de (?:\\d|[01]\\d|2[0-3]) a (?:\\d|[01]\\d|2[0-3])\\d horas/)[0]",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10
+  },
+  {
+    "op": "core/column-addition",
+    "description": "Create column Horario1 at index 7 based on column Horario Hora using expression grel:cells.Days.value + value",
+    "engineConfig": {
+      "mode": "row-based",
+      "facets": []
+    },
+    "newColumnName": "Horario1",
+    "columnInsertIndex": 7,
+    "baseColumnName": "Horario Hora",
+    "expression": "grel:cells.Days.value + value",
+    "onError": "set-to-blank"
+  },
+  {
+    "op": "core/column-rename",
+    "description": "Rename column Horario Hora to Horario Hora1",
+    "oldColumnName": "Horario Hora",
+    "newColumnName": "Horario Hora1"
+  },
+  {
+    "op": "core/column-move",
+    "description": "Move column Horario Hora1 to position 7",
+    "columnName": "Horario Hora1",
+    "index": 7
+  },
+  {
+    "op": "core/column-rename",
+    "description": "Rename column Days to Dias1",
+    "oldColumnName": "Days",
+    "newColumnName": "Dias1"
+  },
+  {
+    "op": "core/column-move",
+    "description": "Move column Horario Hora1 to position 8",
+    "columnName": "Horario Hora1",
+    "index": 8
+  },
+  {
+    "op": "core/column-addition",
+    "description": "Create column Hora2 at index 6 based on column Horario_Clean using expression grel:value.find(/(?:\\d|[01]\\d|2[0-3]) a (?:\\d|[01]\\d|2[0-3])\\d horas/)[1]",
+    "engineConfig": {
+      "mode": "row-based",
+      "facets": []
+    },
+    "newColumnName": "Hora2",
+    "columnInsertIndex": 6,
+    "baseColumnName": "Horario_Clean",
+    "expression": "grel:value.find(/(?:\\d|[01]\\d|2[0-3]) a (?:\\d|[01]\\d|2[0-3])\\d horas/)[1]",
+    "onError": "set-to-blank"
+  },
+  {
+    "op": "core/column-move",
+    "description": "Move column Hora2 to position 7",
+    "columnName": "Hora2",
+    "index": 7
+  },
+  {
+    "op": "core/column-move",
+    "description": "Move column Hora2 to position 6",
+    "columnName": "Hora2",
+    "index": 6
+  },
+  {
+    "op": "core/column-move",
+    "description": "Move column Hora2 to position 7",
+    "columnName": "Hora2",
+    "index": 7
+  },
+  {
+    "op": "core/column-move",
+    "description": "Move column Hora2 to position 8",
+    "columnName": "Hora2",
+    "index": 8
+  },
+  {
+    "op": "core/column-move",
+    "description": "Move column Hora2 to position 9",
+    "columnName": "Hora2",
+    "index": 9
+  },
+  {
+    "op": "core/column-addition",
+    "description": "Create column Dias2 at index 6 based on column Horario_Clean using expression grel:value.find(/de (?:lunes|martes|miércoles|jueves|viernes|sábado|domingo) a (?:lunes|martes|miércoles|jueves|viernes|sábado|domingo)/)[1]",
+    "engineConfig": {
+      "mode": "row-based",
+      "facets": []
+    },
+    "newColumnName": "Dias2",
+    "columnInsertIndex": 6,
+    "baseColumnName": "Horario_Clean",
+    "expression": "grel:value.find(/de (?:lunes|martes|miércoles|jueves|viernes|sábado|domingo) a (?:lunes|martes|miércoles|jueves|viernes|sábado|domingo)/)[1]",
+    "onError": "set-to-blank"
+  },
+  {
+    "op": "core/text-transform",
+    "description": "Text transform on cells in column Horario_Clean using expression grel:replace(value, \",\", \"\")",
+    "engineConfig": {
+      "mode": "row-based",
+      "facets": []
+    },
+    "columnName": "Horario_Clean",
+    "expression": "grel:replace(value, \",\", \"\")",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10
+  },
+  {
+    "op": "core/column-addition",
+    "description": "Create column Horario at index 6 based on column Horario_Clean using expression grel:value.find(/de (?:lunes|martes|miércoles|jueves|viernes|sábado|domingo|sábados|domingos) a (?:lunes|martes|miércoles|jueves|viernes|sábado|domingo|sábados|domingos) de (?:\\d|[01]\\d|2[0-3]) a (?:\\d|[01]\\d|2[0-3])\\d horas /)",
+    "engineConfig": {
+      "mode": "row-based",
+      "facets": []
+    },
+    "newColumnName": "Horario",
+    "columnInsertIndex": 6,
+    "baseColumnName": "Horario_Clean",
+    "expression": "grel:value.find(/de (?:lunes|martes|miércoles|jueves|viernes|sábado|domingo|sábados|domingos) a (?:lunes|martes|miércoles|jueves|viernes|sábado|domingo|sábados|domingos) de (?:\\d|[01]\\d|2[0-3]) a (?:\\d|[01]\\d|2[0-3])\\d horas /)",
+    "onError": "set-to-blank"
+  },
+  {
+    "op": "core/column-removal",
+    "description": "Remove column Horario",
+    "columnName": "Horario"
+  },
+  {
+    "op": "core/column-addition",
+    "description": "Create column Horario at index 6 based on column Horario_Clean using expression grel:value.find(/de (?:lunes|martes|miércoles|jueves|viernes|sábado|domingo|sábados|domingos) a (?:lunes|martes|miércoles|jueves|viernes|sábado|domingo|sábados|domingos) de (?:\\d|[01]\\d|2[0-3]) a (?:\\d|[01]\\d|2[0-3])\\d horas /)[0]",
+    "engineConfig": {
+      "mode": "row-based",
+      "facets": []
+    },
+    "newColumnName": "Horario",
+    "columnInsertIndex": 6,
+    "baseColumnName": "Horario_Clean",
+    "expression": "grel:value.find(/de (?:lunes|martes|miércoles|jueves|viernes|sábado|domingo|sábados|domingos) a (?:lunes|martes|miércoles|jueves|viernes|sábado|domingo|sábados|domingos) de (?:\\d|[01]\\d|2[0-3]) a (?:\\d|[01]\\d|2[0-3])\\d horas /)[0]",
+    "onError": "set-to-blank"
+  },
+  {
+    "op": "core/column-removal",
+    "description": "Remove column Dias2",
+    "columnName": "Dias2"
+  },
+  {
+    "op": "core/column-removal",
+    "description": "Remove column Horario1",
+    "columnName": "Horario1"
+  },
+  {
+    "op": "core/column-removal",
+    "description": "Remove column Dias1",
+    "columnName": "Dias1"
+  },
+  {
+    "op": "core/column-removal",
+    "description": "Remove column Horario Hora1",
+    "columnName": "Horario Hora1"
+  },
+  {
+    "op": "core/column-removal",
+    "description": "Remove column Hora2",
+    "columnName": "Hora2"
+  },
+  {
+    "op": "core/column-addition",
+    "description": "Create column HorarioII at index 6 based on column Horario_Clean using expression grel:value.find(/(?:lunes|martes|miércoles|jueves|viernes|sábado|domingo|sábados|domingos) .{0,2} (?:lunes|martes|miércoles|jueves|viernes|sábado|domingo|sábados|domingos) de .{1,5} a .{1,5} horas/)",
+    "engineConfig": {
+      "mode": "row-based",
+      "facets": [
+        {
+          "omitError": false,
+          "expression": "value",
+          "selectBlank": true,
+          "selection": [],
+          "selectError": false,
+          "invert": false,
+          "name": "Horario",
+          "omitBlank": false,
+          "type": "list",
+          "columnName": "Horario"
+        }
+      ]
+    },
+    "newColumnName": "HorarioII",
+    "columnInsertIndex": 6,
+    "baseColumnName": "Horario_Clean",
+    "expression": "grel:value.find(/(?:lunes|martes|miércoles|jueves|viernes|sábado|domingo|sábados|domingos) .{0,2} (?:lunes|martes|miércoles|jueves|viernes|sábado|domingo|sábados|domingos) de .{1,5} a .{1,5} horas/)",
+    "onError": "set-to-blank"
+  },
+  {
+    "op": "core/column-removal",
+    "description": "Remove column HorarioII",
+    "columnName": "HorarioII"
+  },
+  {
+    "op": "core/column-addition",
+    "description": "Create column Horario!! at index 6 based on column Horario_Clean using expression grel:value.find(/(?:lunes|martes|miércoles|jueves|viernes|sábado|domingo|sábados|domingos) .{0,2} (?:lunes|martes|miércoles|jueves|viernes|sábado|domingo|sábados|domingos) de .{1,5} a .{1,5} horas/)[0]",
+    "engineConfig": {
+      "mode": "row-based",
+      "facets": [
+        {
+          "omitError": false,
+          "expression": "value",
+          "selectBlank": true,
+          "selection": [],
+          "selectError": false,
+          "invert": false,
+          "name": "Horario",
+          "omitBlank": false,
+          "type": "list",
+          "columnName": "Horario"
+        }
+      ]
+    },
+    "newColumnName": "Horario!!",
+    "columnInsertIndex": 6,
+    "baseColumnName": "Horario_Clean",
+    "expression": "grel:value.find(/(?:lunes|martes|miércoles|jueves|viernes|sábado|domingo|sábados|domingos) .{0,2} (?:lunes|martes|miércoles|jueves|viernes|sábado|domingo|sábados|domingos) de .{1,5} a .{1,5} horas/)[0]",
+    "onError": "set-to-blank"
+  },
+  {
+    "op": "core/text-transform",
+    "description": "Text transform on cells in column Horario_Clean using expression grel:toLowercase(value)",
+    "engineConfig": {
+      "mode": "row-based",
+      "facets": [
+        {
+          "omitError": false,
+          "expression": "value",
+          "selectBlank": true,
+          "selection": [],
+          "selectError": false,
+          "invert": false,
+          "name": "Horario",
+          "omitBlank": false,
+          "type": "list",
+          "columnName": "Horario"
+        }
+      ]
+    },
+    "columnName": "Horario_Clean",
+    "expression": "grel:toLowercase(value)",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10
+  },
+  {
+    "op": "core/column-removal",
+    "description": "Remove column Horario!!",
+    "columnName": "Horario!!"
+  },
+  {
+    "op": "core/column-addition",
+    "description": "Create column Horario2 at index 6 based on column Horario_Clean using expression grel:value.find(/(?:lunes|martes|miércoles|jueves|viernes|sábado|domingo|sábados|domingos) .{1,2} (?:lunes|martes|miércoles|jueves|viernes|sábado|domingo|sábados|domingos) de .{1,5} a .{1,5} horas/)",
+    "engineConfig": {
+      "mode": "row-based",
+      "facets": [
+        {
+          "omitError": false,
+          "expression": "value",
+          "selectBlank": true,
+          "selection": [],
+          "selectError": false,
+          "invert": false,
+          "name": "Horario",
+          "omitBlank": false,
+          "type": "list",
+          "columnName": "Horario"
+        }
+      ]
+    },
+    "newColumnName": "Horario2",
+    "columnInsertIndex": 6,
+    "baseColumnName": "Horario_Clean",
+    "expression": "grel:value.find(/(?:lunes|martes|miércoles|jueves|viernes|sábado|domingo|sábados|domingos) .{1,2} (?:lunes|martes|miércoles|jueves|viernes|sábado|domingo|sábados|domingos) de .{1,5} a .{1,5} horas/)",
+    "onError": "set-to-blank"
+  },
+  {
+    "op": "core/column-removal",
+    "description": "Remove column Horario2",
+    "columnName": "Horario2"
+  },
+  {
+    "op": "core/column-addition",
+    "description": "Create column Horario2 at index 6 based on column Horario_Clean using expression grel:value.find(/(?:lunes|martes|miércoles|jueves|viernes|sábado|domingo|sábados|domingos) .{1,2} (?:lunes|martes|miércoles|jueves|viernes|sábado|domingo|sábados|domingos) de .{1,5} a .{1,5} horas/)[0]",
+    "engineConfig": {
+      "mode": "row-based",
+      "facets": [
+        {
+          "omitError": false,
+          "expression": "value",
+          "selectBlank": true,
+          "selection": [],
+          "selectError": false,
+          "invert": false,
+          "name": "Horario",
+          "omitBlank": false,
+          "type": "list",
+          "columnName": "Horario"
+        }
+      ]
+    },
+    "newColumnName": "Horario2",
+    "columnInsertIndex": 6,
+    "baseColumnName": "Horario_Clean",
+    "expression": "grel:value.find(/(?:lunes|martes|miércoles|jueves|viernes|sábado|domingo|sábados|domingos) .{1,2} (?:lunes|martes|miércoles|jueves|viernes|sábado|domingo|sábados|domingos) de .{1,5} a .{1,5} horas/)[0]",
+    "onError": "set-to-blank"
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column HORARIO",
+    "engineConfig": {
+      "mode": "row-based",
+      "facets": [
+        {
+          "omitError": false,
+          "expression": "value",
+          "selectBlank": true,
+          "selection": [],
+          "selectError": false,
+          "invert": false,
+          "name": "HORARIO",
+          "omitBlank": false,
+          "type": "list",
+          "columnName": "HORARIO"
+        }
+      ]
+    },
+    "columnName": "HORARIO",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": true,
+        "fromError": false,
+        "from": [
+          ""
+        ],
+        "to": "No hours available."
+      }
+    ]
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column Horario2",
+    "engineConfig": {
+      "mode": "row-based",
+      "facets": [
+        {
+          "omitError": false,
+          "expression": "value",
+          "selectBlank": false,
+          "selection": [
+            {
+              "v": {
+                "v": "No hours available.",
+                "l": "No hours available."
+              }
+            }
+          ],
+          "selectError": false,
+          "invert": false,
+          "name": "HORARIO",
+          "omitBlank": false,
+          "type": "list",
+          "columnName": "HORARIO"
+        }
+      ]
+    },
+    "columnName": "Horario2",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": true,
+        "fromError": false,
+        "from": [
+          ""
+        ],
+        "to": "No hours available."
+      }
+    ]
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column Horario_Clean",
+    "engineConfig": {
+      "mode": "row-based",
+      "facets": [
+        {
+          "omitError": false,
+          "expression": "value",
+          "selectBlank": false,
+          "selection": [
+            {
+              "v": {
+                "v": "No hours available.",
+                "l": "No hours available."
+              }
+            }
+          ],
+          "selectError": false,
+          "invert": false,
+          "name": "HORARIO",
+          "omitBlank": false,
+          "type": "list",
+          "columnName": "HORARIO"
+        }
+      ]
+    },
+    "columnName": "Horario_Clean",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": true,
+        "fromError": false,
+        "from": [
+          ""
+        ],
+        "to": "No hours available."
+      }
+    ]
+  },
+  {
+    "op": "core/text-transform",
+    "description": "Text transform on cells in column Horario2 using expression value.trim()",
+    "engineConfig": {
+      "mode": "row-based",
+      "facets": []
+    },
+    "columnName": "Horario2",
+    "expression": "value.trim()",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10
+  },
+  {
+    "op": "core/column-addition",
+    "description": "Create column Horario3 at index 7 based on column Horario2 using expression grel:cells[\"Horario\"].value + cells[\"Horario2\"].value",
+    "engineConfig": {
+      "mode": "row-based",
+      "facets": []
+    },
+    "newColumnName": "Horario3",
+    "columnInsertIndex": 7,
+    "baseColumnName": "Horario2",
+    "expression": "grel:cells[\"Horario\"].value + cells[\"Horario2\"].value",
+    "onError": "set-to-blank"
+  },
+  {
+    "op": "core/column-removal",
+    "description": "Remove column Horario3",
+    "columnName": "Horario3"
+  },
+  {
+    "op": "core/text-transform",
+    "description": "Text transform on cells in column Horario2 using expression grel:cells.Horario.value",
+    "engineConfig": {
+      "mode": "row-based",
+      "facets": [
+        {
+          "omitError": false,
+          "expression": "value",
+          "selectBlank": true,
+          "selection": [],
+          "selectError": false,
+          "invert": false,
+          "name": "Horario2",
+          "omitBlank": false,
+          "type": "list",
+          "columnName": "Horario2"
+        },
+        {
+          "omitError": false,
+          "expression": "value",
+          "selectBlank": true,
+          "selection": [],
+          "selectError": false,
+          "invert": true,
+          "name": "Horario",
+          "omitBlank": false,
+          "type": "list",
+          "columnName": "Horario"
+        }
+      ]
+    },
+    "columnName": "Horario2",
+    "expression": "grel:cells.Horario.value",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10
+  },
+  {
+    "op": "core/column-removal",
+    "description": "Remove column Horario",
+    "columnName": "Horario"
+  },
+  {
+    "op": "core/column-rename",
+    "description": "Rename column Horario2 to Horario",
+    "oldColumnName": "Horario2",
+    "newColumnName": "Horario"
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column Horario",
+    "engineConfig": {
+      "mode": "row-based",
+      "facets": []
+    },
+    "columnName": "Horario",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "de martes a sábado: de 9:30 a 20 horas",
+          "martes a sábado de 9:30 a 20 horas"
+        ],
+        "to": "de martes a sábado: de 9:30 a 20 horas"
+      }
+    ]
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column Horario",
+    "engineConfig": {
+      "mode": "row-based",
+      "facets": []
+    },
+    "columnName": "Horario",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "visitas con cita previa"
+        ],
+        "to": "visitas con cita previa"
+      }
+    ]
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column Horario",
+    "engineConfig": {
+      "mode": "row-based",
+      "facets": []
+    },
+    "columnName": "Horario",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "visita con cita previa"
+        ],
+        "to": "visitas con cita previa"
+      }
+    ]
+  },
+  {
+    "op": "core/column-removal",
+    "description": "Remove column Horario_Clean",
+    "columnName": "Horario_Clean"
+  }
+]
