@@ -1,0 +1,141 @@
+[
+  {
+    "op": "core/text-transform",
+    "description": "Text transform on cells in column TELEFONO using expression grel:replace(replace(replace(value, \" \", \"\").substring(0,9), /[A-Z]*/, \"\"), /[a-zńáé]*/, \"\")",
+    "engineConfig": {
+      "mode": "row-based",
+      "facets": []
+    },
+    "columnName": "TELEFONO",
+    "expression": "grel:replace(replace(replace(value, \" \", \"\").substring(0,9), /[A-Z]*/, \"\"), /[a-zńáé]*/, \"\")",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10
+  },
+  {
+    "op": "core/text-transform",
+    "description": "Text transform on cells in column TELEFONO using expression value.toNumber()",
+    "engineConfig": {
+      "mode": "row-based",
+      "facets": []
+    },
+    "columnName": "TELEFONO",
+    "expression": "value.toNumber()",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10
+  },
+  {
+    "op": "core/column-addition",
+    "description": "Create column TRANSPORTE_OLD at index 7 based on column TRANSPORTE using expression grel:value",
+    "engineConfig": {
+      "mode": "row-based",
+      "facets": []
+    },
+    "newColumnName": "TRANSPORTE_OLD",
+    "columnInsertIndex": 7,
+    "baseColumnName": "TRANSPORTE",
+    "expression": "grel:value",
+    "onError": "set-to-blank"
+  },
+  {
+    "op": "core/column-split",
+    "description": "Split column TRANSPORTE by separator",
+    "engineConfig": {
+      "mode": "row-based",
+      "facets": []
+    },
+    "columnName": "TRANSPORTE",
+    "guessCellType": true,
+    "removeOriginalColumn": true,
+    "mode": "separator",
+    "separator": "Bus: ",
+    "regex": false,
+    "maxColumns": 0
+  },
+  {
+    "op": "core/text-transform",
+    "description": "Text transform on cells in column TRANSPORTE 2 using expression grel:replace(trim(replace(replace(replace(replace(value, \"y\", \",\"), /[A-Za-z\\(\\)\\.].*/, \"\"), \" \", \"\"), \",\", \" \")), \" \", \",\")",
+    "engineConfig": {
+      "mode": "row-based",
+      "facets": []
+    },
+    "columnName": "TRANSPORTE 2",
+    "expression": "grel:replace(trim(replace(replace(replace(replace(value, \"y\", \",\"), /[A-Za-z\\(\\)\\.].*/, \"\"), \" \", \"\"), \",\", \" \")), \" \", \",\")",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10
+  },
+  {
+    "op": "core/column-rename",
+    "description": "Rename column TRANSPORTE 2 to BUS_LINEAS",
+    "oldColumnName": "TRANSPORTE 2",
+    "newColumnName": "BUS_LINEAS"
+  },
+  {
+    "op": "core/text-transform",
+    "description": "Text transform on cells in column TRANSPORTE 1 using expression jython:return value[0:value.find(')')+1].replace(\"Metro: \", \"\")",
+    "engineConfig": {
+      "mode": "row-based",
+      "facets": []
+    },
+    "columnName": "TRANSPORTE 1",
+    "expression": "jython:return value[0:value.find(')')+1].replace(\"Metro: \", \"\")",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10
+  },
+  {
+    "op": "core/column-split",
+    "description": "Split column TRANSPORTE 1 by separator",
+    "engineConfig": {
+      "mode": "row-based",
+      "facets": []
+    },
+    "columnName": "TRANSPORTE 1",
+    "guessCellType": true,
+    "removeOriginalColumn": true,
+    "mode": "separator",
+    "separator": " (",
+    "regex": false,
+    "maxColumns": 0
+  },
+  {
+    "op": "core/text-transform",
+    "description": "Text transform on cells in column TRANSPORTE 1 2 using expression grel:replace(trim(replace(replace(replace(value, \"y\", \",\"), /[^0-9\\,]/, \"\"), \",\", \" \")), \" \", \",\")",
+    "engineConfig": {
+      "mode": "row-based",
+      "facets": []
+    },
+    "columnName": "TRANSPORTE 1 2",
+    "expression": "grel:replace(trim(replace(replace(replace(value, \"y\", \",\"), /[^0-9\\,]/, \"\"), \",\", \" \")), \" \", \",\")",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10
+  },
+  {
+    "op": "core/column-rename",
+    "description": "Rename column TRANSPORTE 1 2 to METRO_LINEAS",
+    "oldColumnName": "TRANSPORTE 1 2",
+    "newColumnName": "METRO_LINEAS"
+  },
+  {
+    "op": "core/column-rename",
+    "description": "Rename column TRANSPORTE 1 1 to METRO_ESTACION",
+    "oldColumnName": "TRANSPORTE 1 1",
+    "newColumnName": "METRO_ESTACION"
+  },
+  {
+    "op": "core/text-transform",
+    "description": "Text transform on cells in column METRO_ESTACION using expression grel:trim(value)",
+    "engineConfig": {
+      "mode": "row-based",
+      "facets": []
+    },
+    "columnName": "METRO_ESTACION",
+    "expression": "grel:trim(value)",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10
+  }
+]
