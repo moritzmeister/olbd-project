@@ -15,3 +15,5 @@ Linked open vocabulary
 4. How to avoid resource generation multiple times?
 5. Remove duplicates or create separate data sets and merge rdfs together in the end?
 6. Does the schema:name replace the rdfs:label? Do we need rdfs:label for all of the resources?
+
+7. Barrio/Distrito und Localidad, how to link to wikidata if it is not a class but a data node?
