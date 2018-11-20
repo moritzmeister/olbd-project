@@ -1,0 +1,2 @@
+Fuseki Start-Up
+./fuseki-server --update --mem /ds
