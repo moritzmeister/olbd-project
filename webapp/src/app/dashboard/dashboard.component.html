@@ -1,29 +1,17 @@
 <div class="container-fluid">
   <div class="d-flex flex-row flex-nowrap">
-      <div class="card card-body">Card</div>
-      <div class="card card-body">Card</div>
-      <div class="card card-body">Card</div>
-      <div class="card card-body">Card</div>
-      <div class="card card-body">Card</div>
-      <div class="card card-body">Card</div>
-      <div class="card card-body">Card</div>
-      <div class="card card-body">Card</div>
-      <div class="card card-body">Card</div>
-      <div class="card card-body">Card</div>
-      <div class="card card-body">Card</div>
-      <div class="card card-body">Card</div>
-      <div class="card card-body">Card</div>
-      <div class="card card-body">Card</div>
+    <div *ngFor="let sight of sights" class="card">
+      <img class="card-img-top" src="assets/img/dummy.png" alt="Card image cap">
+      <div class="card-body d-flex flex-column">
+        <h5 class="card-title">{{sight.name}}</h5>
+        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
+          content.</p>
+        <div class="btn-toolbar mt-auto">
+          <button href="#" class="btn btn-primary">Details</button>
+          <button href="#" class="btn btn-primary">Website</button>
+        </div>
+
+      </div>
+    </div>
   </div>
 </div>
-
-<!--
-<div class="grid grid-pad">
-  <a *ngFor="let museum of museums" class="col-1-4">
-    <div class="module museum">
-      <h4>{{museum.name}}</h4>
-    </div>
-  </a>
-</div>
--->
-

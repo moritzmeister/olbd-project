@@ -17,3 +17,5 @@ WHERE {
   ?x a <http://schema.org/CivicStructure>.
   ?x <http://schema.org/name> ?name.
 }' localhost:3030/MuseumsandMonumentsMadrid/query
+
+PREFIX http: <http://www.w3.org/2011/http#> prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> prefix owl: <http://www.w3.org/2002/07/owl#> SELECT ?name WHERE { ?x a <http://schema.org/CivicStructure>. ?x <http://schema.org/name> ?name. }

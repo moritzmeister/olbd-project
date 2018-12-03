@@ -63,3 +63,14 @@ SELECT * where
 ?museum <http://purl.org/dc/terms/subject> <http://dbpedia.org/resource/Category:Paseo_del_Prado>
 
 }
+
+
+SELECT ?name ?opening ?wiki ?pic
+WHERE {
+  ?x a schema:CivicStructure.
+  ?x schema:name ?name .
+  ?x schema:openingHours ?opening.
+  ?x owl:sameAs ?wiki.
+  ?wiki a <https://www.wikidata.org/wiki/Q2087181>.
+  
+}

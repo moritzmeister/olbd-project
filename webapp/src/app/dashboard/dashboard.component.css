@@ -1,5 +1,9 @@
+.card {
+  width: 35rem;
+  height: 45rem;
+}
 .card-body {
-  min-height: 300px;
-  min-width: 300px;
+  /*min-height: 500px;
+  min-width: 300px;*/
   margin-right: 5px;
 }
