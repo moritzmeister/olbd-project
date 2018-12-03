@@ -3,10 +3,12 @@ import { RouterModule, Routes } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { MuseumsComponent } from './museums/museums.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { MuseumDetailComponent }  from './museum-detail/museum-detail.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
-  { path: 'museumsandmonuments', component: MuseumsComponent },
+  { path: 'search', component: MuseumsComponent },
+  { path: 'detail/:name', component: MuseumDetailComponent },
   { path: 'dashboard', component: DashboardComponent }
 ];
 

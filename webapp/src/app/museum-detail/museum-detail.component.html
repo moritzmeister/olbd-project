@@ -1,6 +1,13 @@
 
-<div *ngIf="selectedMuseum">
-  <h2>{{selectedMuseum.name | uppercase}} Details</h2>
-  <div><span>id: </span>{{selectedMuseum.id}}</div>
-  <div><span>name: </span>{{selectedMuseum.name}}</div>
+<div *ngIf="museum">
+  <h2>{{museum.name | uppercase}} </h2>
+  <div *ngIf="museum.type"><span>Type of Sight: </span>{{museum.type}}</div>
+  <div *ngIf="museum.hours"><span>Opening Hours: </span>{{museum.hours}}</div>
+  <div *ngIf="museum.description"><span>Description: </span>{{museum.description}}</div>
+  <div *ngIf="museum.telephone"><span>Telephone Number: </span>{{museum.telephone}}</div>
+  <div *ngIf="museum.webpage"><span>Webpage: </span> <a id="link-1" href="{{museum.webpage}}">Ayuntamiento de Madrid</a> </div>
+  <div *ngIf="museum.link"><span>Additional Information: </span> <a id="link-2" href="{{museum.webpage}}">Wikidata</a> </div>
+    
+
+  <button (click)="goBack()">go back</button>
 </div>

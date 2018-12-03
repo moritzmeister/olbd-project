@@ -17,3 +17,75 @@ WHERE {
   ?x a <http://schema.org/CivicStructure>.
   ?x <http://schema.org/name> ?name.
 }' localhost:3030/MuseumsandMonumentsMadrid/query
+
+
+query=PREFIX http: <http://www.w3.org/2011/http#>prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> prefix owl: <http://www.w3.org/2002/07/owl#> SELECT ?name WHERE { ?x a <http://schema.org/CivicStructure>. ?x <http://schema.org/name> ?name.}
+
+
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+
+SELECT ?x ?hours
+WHERE {
+  ?x a <http://schema.org/CivicStructure>.
+  ?x <http://schema.org/name> "Casa Museo Lope de Vega"^^<xsd:string>.
+  ?x <http://schema.org/openingHours> ?hours.
+}
+
+
+############# to get an overview of the available data #######
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX schema: <http://schema.org/>
+
+DESCRIBE ?x
+WHERE {
+  ?x a schema:CivicStructure;
+  schema:name "Casa Museo Lope de Vega"^^<xsd:string>;
+}
+
+#### get the type: Museum/Monument ####
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+
+SELECT ?type
+WHERE {
+  ?x a <http://schema.org/CivicStructure>.
+  ?x <http://schema.org/name> "Casa Museo Lope de Vega"^^<xsd:string>.
+  ?x a ?type.
+  FILTER (?type != <http://schema.org/CivicStructure>).
+}
+
+
+### get the description #####
+
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX schema: <http://schema.org/>
+
+SELECT ?description
+WHERE {
+  ?x a schema:CivicStructure;
+  schema:name "Casa Museo Lope de Vega"^^<xsd:string>;
+  schema:description ?description.
+}
+
+
+### get the webpage ####
+PREFIX mam: <http://www.semanticweb.org/museumsandmonumentsmadrid/ontology/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX schema: <http://schema.org/>
+SELECT ?webpage
+WHERE {
+  ?x a schema:CivicStructure;
+  schema:name "Casa Museo Lope de Vega"^^<xsd:string>;
+  mam:webpage ?webpage.
+}
+
+#### link externally ####
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX schema: <http://schema.org/>
+SELECT ?link
+WHERE {
+  ?x a schema:CivicStructure;
+  schema:name "Casa Museo Lope de Vega"^^<xsd:string>;
+  owl:sameAs ?link.
+}
+

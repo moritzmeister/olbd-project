@@ -10,9 +10,8 @@ import { MuseumService } from '../museum.service';
 })
 
 export class MuseumsComponent implements OnInit {
-
   selectedMuseum: Museum;
-  museums: Museum[];
+  museums: Museum[]= [];
 
   constructor(private museumService: MuseumService) { }
 
@@ -25,8 +24,10 @@ export class MuseumsComponent implements OnInit {
   }
 
 getMuseums(): void {
-  this.museumService.getMuseums()
-  .subscribe(museums => this.museums = museums);
-
+  this.museumService.getMuseums().subscribe(data => {
+      data.results.bindings.forEach(element => {this.museums.push(new Museum(element.name.value));
+      });
+  });
 }
+
 }
