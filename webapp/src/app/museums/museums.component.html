@@ -1,10 +1,8 @@
-
+<h2>My Museums</h2>
 <ul class="museums">
-  <li *ngFor="let museum of museums"
-    [class.selected]="museum === selectedMuseum"
-    (click)="onSelect(museum)">
-    <span class="badge">{{museum.id}}</span> {{museum.name}}
+  <li *ngFor="let museum of museums">
+    <a routerLink="/detail/{{museum.name}}">
+      <span class="badge">{{museum.id}}</span> {{museum.name}}
+    </a>
   </li>
 </ul>
-
-<app-museum-detail [museum]="selectedMuseum"></app-museum-detail>
