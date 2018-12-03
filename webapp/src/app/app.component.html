@@ -1,15 +1,25 @@
 <div class="root">
-  <header class="header">
-      <h1>Welcome to {{ title }}!</h1>
-  </header>
-  <main class="main">
-    <nav>
-      <a routerLink="/museumsandmonuments">Museums and Monuments Madrid</a>
-      <a routerLink="/dashboard">Dashboard</a>
+    <nav class="navbar navbar-expand-lg fixed-top navbar-light bg-light">
+        <a class="navbar-brand" href="#page-top">{{ title }}</a>
+
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav" routerLinkActive="active">
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="dashboard">Dashboard</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="search">Search</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="About">About</a>
+                </li>
+            </ul>
+        </div>
     </nav>
-      <router-outlet></router-outlet>
-  </main>
-  <footer class="footer">
-      <small class="authors__text">By Moritz Meister and Jacqueline Neef</small>
-  </footer>
+
+    <router-outlet></router-outlet>
+
+    <footer class="footer">
+        <small class="authors__text">By Moritz Meister and Jacqueline Neef</small>
+    </footer>
 </div>

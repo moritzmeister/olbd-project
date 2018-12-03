@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Museum } from '../museum';
 import { MuseumService } from '../museum.service';
+import { DashboardService } from '../dashboard.service';
+import { Sight } from '../sight';
 
 @Component({
   selector: 'app-dashboard',
@@ -8,16 +10,16 @@ import { MuseumService } from '../museum.service';
   styleUrls: [ './dashboard.component.css' ]
 })
 export class DashboardComponent implements OnInit {
-  museums: Museum[] = [];
+  sights: Sight[] = [];
 
-  constructor(private museumService: MuseumService) { }
+  constructor(private dashboardService: DashboardService) { }
 
   ngOnInit() {
-    this.getMuseums();
+    this.getSights();
   }
 
-  getMuseums(): void {
-    this.museumService.getMuseums()
-      .subscribe(museums => this.museums = museums.slice(1, 5));
+  getSights(): void {
+    this.dashboardService.getSights()
+      .subscribe(sights => this.sights = sights);
   }
 }
