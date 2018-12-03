@@ -11,7 +11,7 @@ import { MuseumService } from '../museum.service';
 
 export class MuseumsComponent implements OnInit {
   selectedMuseum: Museum;
-  museums: Museum[]= [];
+  museums: Museum[] = [];
 
   constructor(private museumService: MuseumService) { }
 

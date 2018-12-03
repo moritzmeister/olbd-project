@@ -3,8 +3,8 @@ import { Museum } from '../museum';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 
-import { MuseumService }  from '../museum.service';
-import { MuseumsComponent } from './museums/museums.component';
+import { MuseumService } from '../museum.service';
+import { MuseumsComponent } from '../museums/museums.component';
 
 @Component({
   selector: 'app-museum-detail',
@@ -12,14 +12,14 @@ import { MuseumsComponent } from './museums/museums.component';
   styleUrls: ['./museum-detail.component.css']
 })
 export class MuseumDetailComponent implements OnInit {
-  museum:Museum;
+  museum: Museum;
 
   constructor(
     private route: ActivatedRoute,
     private museumService: MuseumService,
-    private location: Location){ }
+    private location: Location) { }
 
-  ngOnInit():void {
+  ngOnInit(): void {
     this.getMuseum();
   }
 

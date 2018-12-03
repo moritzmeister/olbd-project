@@ -1,4 +1,4 @@
-export class Museum{
+export class Museum {
   id: number;
   name: string;
   hours: string;
@@ -6,9 +6,9 @@ export class Museum{
   description: string;
   telephone: string;
   webpage: string;
-  link:string;
+  link: string;
 
-  constructor(name:string) {
+  constructor(name: string) {
     this.name = name;
   }
 
