@@ -3,7 +3,10 @@
       <h1>Welcome to {{ title }}!</h1>
   </header>
   <main class="main">
-      <app-museums></app-museums>
+    <nav>
+<a routerLink="/museumsandmonuments">Museums and Monuments Madrid</a>
+</nav>
+      <router-outlet></router-outlet>
       <app-messages></app-messages>
   </main>
   <footer class="footer">
