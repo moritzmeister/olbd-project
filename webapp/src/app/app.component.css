@@ -1,0 +1,64 @@
+.root {
+  font-family: sans-serif;
+  width: 100vw;
+  height: 100vh;
+  display: grid;
+  grid-template-columns: auto;
+  grid-template-rows: 0.5fr auto;
+  position: relative;
+}
+
+/*
+================
+    Header
+================
+*/
+.header {
+  text-align: center;
+  width: 100%;
+  display: grid;
+  box-shadow: 0 0 2rem rgba(0, 0, 255, 0.1);
+  height: 4rem;
+  margin: 0;
+  align-items: center;
+  transition: background-color 500ms linear;
+  animation: 1s ease-in-out 0ms 1 fadein;
+}
+
+.logo__icon {
+  height: 2rem;
+  margin-left: 1rem;
+}
+
+.logo__text {
+  fill: #2B244D;
+}
+
+/*
+================
+    Body
+================
+*/
+.main{
+  text-align: center;
+  position: relative;
+}
+
+/*
+================-
+    Footer
+================
+*/
+.footer {
+  text-align: center;
+  background: transparent;
+  position: absolute;
+  bottom: 1rem;
+  left: 1.5rem;
+  z-index: 100;
+}
+
+.authors__text {
+  letter-spacing: 0.1rem;
+  color: black;
+}
