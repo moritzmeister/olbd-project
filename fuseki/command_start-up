@@ -89,3 +89,12 @@ WHERE {
   owl:sameAs ?link.
 }
 
+####retrieve the photo from wikidata ####
+
+https://query.wikidata.org/
+SELECT ?pic
+WHERE {
+wd:Q2268271 wdt:P18 ?pic.
+}
+
+curl -X POST -d 'query=SELECT ?pic WHERE {wd:Q2268271 wdt:P18 ?pic.}' https://query.wikidata.org/sparql

@@ -13,6 +13,7 @@ import { MuseumsComponent } from '../museums/museums.component';
 })
 export class MuseumDetailComponent implements OnInit {
   museum: Museum;
+  wikiid : string;
 
   constructor(
     private route: ActivatedRoute,
@@ -21,6 +22,7 @@ export class MuseumDetailComponent implements OnInit {
 
   ngOnInit(): void {
     this.getMuseum();
+
   }
 
   getMuseum(): void {
@@ -43,7 +45,11 @@ export class MuseumDetailComponent implements OnInit {
     .subscribe(data => {data.results.bindings.forEach(element => this.museum.webpage = element.webpage.value);
     });
     this.museumService.getMuseumLink(name)
-    .subscribe(data => {data.results.bindings.forEach(element => this.museum.link = element.link.value);
+    .subscribe(data => {data.results.bindings.forEach(element => this.museum.wikiid = element.link.value);
+    });
+    console.log(this.museum.wikiid);
+    this.museumService.getPicture(this.museum.wikiid)
+    .subscribe(data => {data.results.bindings.forEach(element => this.museum.picture = element.pic.value);
     });
   }
 

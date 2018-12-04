@@ -7,6 +7,8 @@
   <div *ngIf="museum.telephone"><span>Telephone Number: </span>{{museum.telephone}}</div>
   <div *ngIf="museum.webpage"><span>Webpage: </span> <a id="link-1" href="{{museum.webpage}}">Ayuntamiento de Madrid</a> </div>
   <div *ngIf="museum.link"><span>Additional Information: </span> <a id="link-2" href="{{museum.link}}">Wikidata</a> </div>
+  <div *ngIf="museum.wikiid"><span>Wikidata: </span> {{museum.wikiid}}</div>
+  <div *ngIf="museum.picture"><img src ="{{museum.picture}}" width="200" height="200" /></div>
 
 
   <button (click)="goBack()">go back</button>

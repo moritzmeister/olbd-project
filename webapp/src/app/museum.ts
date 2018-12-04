@@ -7,6 +7,8 @@ export class Museum {
   telephone: string;
   webpage: string;
   link: string;
+  wikiid: string;
+  picture: string;
 
   constructor(name: string) {
     this.name = name;
