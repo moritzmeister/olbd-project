@@ -34,6 +34,7 @@ export class DashboardComponent implements OnInit {
       });
   }
 
+
   getTest(): void {
     this.dashboardService.getSights().subscribe(data => console.log(data));
   }

@@ -44,15 +44,22 @@ export class MuseumDetailComponent implements OnInit {
     this.museumService.getMuseumWebpage(name)
     .subscribe(data => {data.results.bindings.forEach(element => this.museum.webpage = element.webpage.value);
     });
+    this.museumService.getBus(name)
+    .subscribe(data => {data.results.bindings.forEach(element => this.museum.bus = element.bus.value);
+    });
+
     this.museumService.getMuseumLink(name)
     .subscribe(data => {
       data.results.bindings.forEach(element => this.museum.wikiid = element.link.value.substring(30));
       this.museumService.getPicture(this.museum.wikiid)
       .subscribe(data2 => {data2.results.bindings.forEach(element => this.museum.picture = element.pic.value);
       });
+      this.museumService.getWikipedia(this.museum.wikiid)
+      .subscribe(data3 => {data3.results.bindings.forEach(element => console.log(this.museum.wikipedia = element.article.value));
     });
-  }
-  
+  });
+}
+
   goBack(): void {
   this.location.back();
 }

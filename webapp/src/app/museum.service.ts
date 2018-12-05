@@ -31,7 +31,6 @@ getMuseumHours(name: string): Observable<any> {
   var c = '"^^<xsd:string>.?x <http://schema.org/openingHours> ?hours.}'
   var x = a.concat(name);
   var localquery = x.concat(c);
-  console.log(localquery)
   return this.http.get<any>(this.fusekiUrl + '?query=' + encodeURIComponent(localquery));
 }
 
@@ -40,7 +39,6 @@ getMuseumType(name: string): Observable<any> {
   var c = '"^^<xsd:string>.?x a ?type. FILTER (?type != <http://schema.org/CivicStructure>). }'
   var x = a.concat(name);
   var localquery = x.concat(c);
-  console.log(localquery)
   return this.http.get<any>(this.fusekiUrl + '?query=' + encodeURIComponent(localquery));
 }
 getMuseumDescription(name: string): Observable<any> {
@@ -48,7 +46,6 @@ getMuseumDescription(name: string): Observable<any> {
   var c = '"^^<xsd:string>; schema:description ?description.}'
   var x = a.concat(name);
   var localquery = x.concat(c);
-  console.log(localquery)
   return this.http.get<any>(this.fusekiUrl + '?query=' + encodeURIComponent(localquery));
 }
 
@@ -57,7 +54,6 @@ getMuseumTelephone(name: string): Observable<any> {
   var c = '"^^<xsd:string>; schema:telephone ?telephone.}';
   var x = a.concat(name);
   var localquery = x.concat(c);
-  console.log(localquery)
   return this.http.get<any>(this.fusekiUrl + '?query=' + encodeURIComponent(localquery));
 }
 
@@ -66,7 +62,6 @@ getMuseumWebpage(name: string): Observable<any> {
   var c = '"^^<xsd:string>; mam:webpage ?webpage.}';
   var x = a.concat(name);
   var localquery = x.concat(c);
-  console.log(localquery)
   return this.http.get<any>(this.fusekiUrl + '?query=' + encodeURIComponent(localquery));
 }
 
@@ -75,17 +70,41 @@ getMuseumLink(name: string): Observable<any> {
   var c = '"^^<xsd:string>; owl:sameAs ?link.}';
   var x = a.concat(name);
   var localquery = x.concat(c);
-  console.log(localquery)
   return this.http.get<any>(this.fusekiUrl + '?query=' + encodeURIComponent(localquery));
 }
 
-getPicture(wikiid: string): Observable<any> {
+getBus(name:string): Observable<any>{
+var a = 'PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> PREFIX schema: <http://schema.org/> PREFIX mam: <http://www.semanticweb.org/museumsandmonumentsmadrid/ontology/> PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> SELECT ?bus WHERE {?sight a schema:CivicStructure. ?sight schema:name "'
+var c =  '"^^<xsd:string>.?sight mam:reachableBy ?transport.?transport a mam:PublicTransport.?trip rdfs:subClassOf ?transport.?trip schema:busNumber ?bus.}'
+var x = a.concat(name);
+var localquery = x.concat(c);
+console.log(localquery)
+return this.http.get<any>(this.fusekiUrl + '?query=' + encodeURIComponent(localquery));
+}
+
+getMetro(name:string): Observable<any>{
+var a = 'PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> PREFIX schema: <http://schema.org/> PREFIX mam: <http://www.semanticweb.org/museumsandmonumentsmadrid/ontology/> PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> SELECT ?bus WHERE {?sight a schema:CivicStructure. ?sight schema:name "'
+var c =  '"^^<xsd:string>.?sight mam:reachableBy ?transport.?transport a mam:PublicTransport.?trip rdfs:subClassOf ?transport.?trip schema:busNumber ?bus.}'
+var x = a.concat(name);
+var localquery = x.concat(c);
+console.log(localquery)
+return this.http.get<any>(this.fusekiUrl + '?query=' + encodeURIComponent(localquery));
+}
+
+
+getPicture(wikiid: string): Observable<any>{
   var a = 'SELECT ?pic WHERE { wd:';
   var c = ' wdt:P18 ?pic.}';
   var x = a.concat(wikiid);
   var localquery = x.concat(c);
-  console.log(localquery)
   return this.http.get<any>(this.wikiUrl + '?query=' + encodeURIComponent(localquery));
 }
 
+getWikipedia(wikiid:string):Observable<any>{
+  var a = 'prefix schema: <http://schema.org/> PREFIX wd: <http://www.wikidata.org/entity/> SELECT ?article WHERE {?article schema:about wd:';
+  var c = '.?article schema:inLanguage "es". FILTER (SUBSTR(str(?article), 1, 25) = "https://es.wikipedia.org/")}';
+  var x = a.concat(wikiid);
+  var localquery = x.concat(c);
+  return this.http.get<any>(this.wikiUrl + '?query=' + encodeURIComponent(localquery));
+}
 }

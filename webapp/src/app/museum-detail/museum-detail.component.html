@@ -3,11 +3,33 @@
   <h2>{{museum.name | uppercase}} </h2>
   <div *ngIf="museum.type"><span>Type of Sight: </span>{{museum.type}}</div>
   <div *ngIf="museum.hours"><span>Opening Hours: </span>{{museum.hours}}</div>
-  <div *ngIf="museum.description"><span>Description: </span>{{museum.description}}</div>
+  <div *ngIf="museum.description">
+  <button class="btn btn-link" data-toggle="collapse" data-target="#description" aria-expanded="false" aria-controls="collapseOne">
+    Description
+  </button>
+  <div class="collapse" id="description">
+  <div class="card-body">
+  </div>
+  </div>
+  </div>
   <div *ngIf="museum.telephone"><span>Telephone Number: </span>{{museum.telephone}}</div>
   <div *ngIf="museum.webpage"><span>Webpage: </span> <a id="link-1" href="{{museum.webpage}}">Ayuntamiento de Madrid</a> </div>
-  <div *ngIf="museum.link"><span>Additional Information: </span> <a id="link-2" href="{{museum.link}}">Wikidata</a> </div>
+  <div *ngIf="museum.wikipedia">Additional Information: <a id="link-2" href="{{museum.wikipedia}}">Wikipedia</a> </div>
+
+
+  <button class="btn btn-link" data-toggle="collapse" data-target="#publictransport" aria-expanded="false" aria-controls="collapseOne">
+    Public Transport
+  </button>
+  <div class="collapse" id="publictransport">
+  <div class="card-body">
+    <div *ngIf="museum.bus"><span>Bus: </span>{{museum.bus}}</div>
+    <div *ngIf="museum.metro"><span>Metro: </span>{{museum.metro}}</div>
+  </div>
+  </div>
+
+  <!--
   <div *ngIf="museum.wikiid"><span>Wikidata: </span> {{museum.wikiid}}</div>
+  -->
   <div *ngIf="museum.picture"><img src ="{{museum.picture}}" width="200" height="200" /></div>
 
 

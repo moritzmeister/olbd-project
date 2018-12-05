@@ -98,3 +98,31 @@ wd:Q2268271 wdt:P18 ?pic.
 }
 
 curl -X POST -d 'query=SELECT ?pic WHERE {wd:Q2268271 wdt:P18 ?pic.}' https://query.wikidata.org/sparql
+
+##### Public Transport######
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX schema: <http://schema.org/>
+PREFIX mam:   <http://www.semanticweb.org/museumsandmonumentsmadrid/ontology/>
+
+SELECT ?x ?transportlink ?transp
+WHERE {
+  ?x a schema:CivicStructure;
+     mam:reachableBy ?transportlink.
+  ?transportlink a ?transp.
+  ?transp a
+}
+
+######
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX schema: <http://schema.org/>
+PREFIX mam:   <http://www.semanticweb.org/museumsandmonumentsmadrid/ontology/>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+SELECT ?sight ?bus
+WHERE {
+  ?sight a schema:CivicStructure.
+  ?sight mam:reachableBy ?transport.
+  ?transport a mam:PublicTransport.
+  ?trip rdfs:subClassOf ?transport.
+  ?trip schema:busNumber ?bus.
+}
