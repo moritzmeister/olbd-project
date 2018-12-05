@@ -11,6 +11,7 @@ import { Observable } from 'rxjs';
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
+  selectedSight: Sight;
   sights: Sight[] = [];
 
   constructor(private dashboardService: DashboardService) { }
@@ -19,6 +20,10 @@ export class DashboardComponent implements OnInit {
     this.getSights();
     this.getTest();
     console.log(this.sights);
+  }
+
+  onSelect(sight: Sight): void {
+    this.selectedSight = sight;
   }
 
   getSights(): void {
