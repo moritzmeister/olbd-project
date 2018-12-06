@@ -95,9 +95,7 @@ owl:equivalentClass rdf:type owl:ObjectProperty .
 
 ###  http://schema.org/name
 <http://schema.org/name> rdf:type owl:DatatypeProperty ;
-                         rdfs:domain <http://schema.org/CivicStructure> ,
-                                     <http://schema.org/TrainStation> ,
-                                     <http://www.semanticweb.org/museumsandmonumentsmadrid/ontology/Quarter> ;
+                         rdfs:domain <http://schema.org/CivicStructure> ;
                          rdfs:range xsd:string .
 
 
