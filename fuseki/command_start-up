@@ -203,3 +203,5 @@ WHERE{
   ?geocoordinates schema:address ?address.
   ?address mam:hasQuarter ?quarter.
 }
+
+<http://www.semanticweb.org/museumsandmonumentsmadrid/ontology/> SELECT ?quarterwiki WHERE {?x a schema:CivicStructure; schema:geo ?geocoordinates; schema:name"Monasterio de las Descalzas Reales"^^<xsd:string>.?geocoordinates schema:address ?address. ?address mam:hasQuarter ?quarter. ?quarter owl:sameAs ?quarterwiki }

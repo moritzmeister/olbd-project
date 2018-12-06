@@ -50,6 +50,14 @@ getQuarter(name: string): Observable<any> {
   console.log(localquery);
   return this.http.get<any>(this.fusekiUrl + '?query=' + encodeURIComponent(localquery));
 }
+getQuarterWiki(name: string): Observable<any> {
+  var a = 'PREFIX schema: <http://schema.org/> PREFIX owl: <http://www.w3.org/2002/07/owl#> PREFIX mam:<http://www.semanticweb.org/museumsandmonumentsmadrid/ontology/> SELECT ?quarterwiki WHERE {?x a schema:CivicStructure; schema:geo ?geocoordinates; schema:name"';
+  var c = '"^^<xsd:string>.?geocoordinates schema:address ?address. ?address mam:hasQuarter ?quarter. ?quarter owl:sameAs ?quarterwiki.}';
+  var x = a.concat(name);
+  var localquery = x.concat(c);
+  console.log(localquery);
+  return this.http.get<any>(this.fusekiUrl + '?query=' + encodeURIComponent(localquery));
+}
 getMuseumDescription(name: string): Observable<any> {
   var a = 'PREFIX schema: <http://schema.org/> SELECT ?description WHERE {?x a schema:CivicStructure; schema:name "';
   var c = '"^^<xsd:string>; schema:description ?description.}'
@@ -150,8 +158,10 @@ getPicture(wikiid: string): Observable<any>{
 getWikipedia(wikiid:string):Observable<any>{
   var a = 'prefix schema: <http://schema.org/> PREFIX wd: <http://www.wikidata.org/entity/> SELECT ?article WHERE {?article schema:about wd:';
   var c = '.?article schema:inLanguage "es". FILTER (SUBSTR(str(?article), 1, 25) = "https://es.wikipedia.org/")}';
+  console.log(wikiid);
   var x = a.concat(wikiid);
   var localquery = x.concat(c);
+  console.log(localquery);
   return this.http.get<any>(this.wikiUrl + '?query=' + encodeURIComponent(localquery));
 }
 }
