@@ -126,3 +126,80 @@ WHERE {
   ?trip rdfs:subClassOf ?transport.
   ?trip schema:busNumber ?bus.
 }
+
+
+###### metrostation link
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX schema: <http://schema.org/>
+PREFIX mam:   <http://www.semanticweb.org/museumsandmonumentsmadrid/ontology/>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+SELECT ?metrostation
+WHERE {
+  ?sight a schema:CivicStructure;
+  mam:reachableBy ?transport;
+  schema:name "Casa Museo Lope de Vega"^^<xsd:string>.
+  ?transport a mam:PublicTransport.
+  ?trip rdfs:subClassOf ?transport;
+  schema:arrivalStation ?metrostation.
+}
+
+
+####### metrostation name
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX schema: <http://schema.org/>
+PREFIX mam:   <http://www.semanticweb.org/museumsandmonumentsmadrid/ontology/>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+SELECT ?metrostationname
+WHERE {
+  ?sight a schema:CivicStructure;
+  mam:reachableBy ?transport;
+  schema:name "Casa Museo Lope de Vega"^^<xsd:string>.
+  ?transport a mam:PublicTransport.
+  ?trip rdfs:subClassOf ?transport;
+  schema:arrivalStation ?metrostation.
+  ?metrostation schema:name ?metrostationname.
+}
+
+
+####### metro line
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX schema: <http://schema.org/>
+PREFIX mam:   <http://www.semanticweb.org/museumsandmonumentsmadrid/ontology/>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+SELECT ?metroline
+WHERE {
+  ?sight a schema:CivicStructure;
+  mam:reachableBy ?transport;
+  schema:name "Casa Museo Lope de Vega"^^<xsd:string>.
+  ?transport a mam:PublicTransport.
+  ?trip rdfs:subClassOf ?transport;
+  schema:trainNumber ?metroline.
+}
+
+PREFIX schema:<http://schema.org/> SELECT ?street WHERE {?x a schema:CivicStructure; schema:geo ?geocoordinates; schema:name "Castillo de la Alameda"^^<xsd:string>;?geocoordinates schema:address ?address. ?address schema:streetAddress ?street.}
+
+
+##### zip code ######
+PREFIX schema:<http://schema.org/>
+
+SELECT ?zip WHERE{
+  ?x a schema:CivicStructure;
+  	schema:geo ?geocoordinates.
+  ?geocoordinates schema:address ?address.
+  ?address schema:postalCode ?zip;
+     }
+
+### quarter ###
+PREFIX schema:<http://schema.org/>
+PREFIX mam:<http://www.semanticweb.org/museumsandmonumentsmadrid/ontology/>
+
+DESCRIBE ?quarter
+WHERE{
+  ?x a schema:CivicStructure;
+  	schema:geo ?geocoordinates.
+  ?geocoordinates schema:address ?address.
+  ?address mam:hasQuarter ?quarter.
+}
