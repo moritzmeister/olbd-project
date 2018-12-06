@@ -18,24 +18,27 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit() {
     this.getSights();
-    this.getTest();
     console.log(this.sights);
   }
+
 
   onSelect(sight: Sight): void {
     this.selectedSight = sight;
   }
 
   getSights(): void {
-    this.dashboardService.getSights().subscribe(data => {
-      data.results.bindings.forEach(element => {
-           this.sights.push(new Sight(element.name.value, element.opening.value));
-         });
-      });
-  }
-
-  getTest(): void {
-    this.dashboardService.getSights().subscribe(data => console.log(data));
+    this.dashboardService.getSights()
+      .subscribe(data => {
+        console.log(data);
+        data.results.bindings.forEach(element => {
+          const temp = new Sight(element.name.value);
+          temp.hours = element.opening.value;
+          temp.type = element.type.value.substring(62);
+          temp.telephone = element.telephone.value;
+          temp.link = element.link.value.substring(30);
+          this.sights.push(temp);
+          });
+        });
   }
 
 }
