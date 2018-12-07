@@ -1,17 +1,3 @@
-<<<<<<< HEAD
-<div>
-    <h4>Museum Search</h4>
-<app-museum-search></app-museum-search>
-</div>
-<div>
-<ul class="museums">
-  <li *ngFor="let museum of museums">
-    <a routerLink="/detail/{{museum.name}}">
-      <span class="badge">{{museum.id}}</span> {{museum.name}}
-    </a>
-  </li>
-</ul>
-=======
 <div class="container">
 
     <div class="card">
@@ -23,7 +9,7 @@
             </div>
             <input [(ngModel)]="searchText" type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1">
           </div>
-          
+
       </div>
       <div class="card-body">
         <div class="list-group">
@@ -33,5 +19,4 @@
         </div>
       </div>
     </div>
->>>>>>> 0b6fda1c1813f2b5fb7e09cbda4965fff0d6b9e8
 </div>
