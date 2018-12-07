@@ -4,7 +4,7 @@ import { Observable, of } from 'rxjs';
 import { Museum } from './museum';
 import { MessageService } from './message.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { map } from 'rxjs/operators';
+import { catchError, tap, map } from 'rxjs/operators';
 
 
 @Injectable({
@@ -15,6 +15,7 @@ export class MuseumService {
 
   private fusekiUrl = 'http://localhost:3030/MuseumsandMonumentsMadrid/query';
   private wikiUrl = 'https://query.wikidata.org/sparql';
+  private museumUrl = 'http://localhost:4200/search'
 
   constructor(
     private http: HttpClient,
@@ -24,6 +25,17 @@ export class MuseumService {
 query = 'PREFIX http: <http://www.w3.org/2011/http#>prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> prefix owl: <http://www.w3.org/2002/07/owl#> prefix schema: <http://schema.org/> SELECT ?name WHERE { ?x a schema:CivicStructure; schema:name ?name.}';
 getMuseums(): Observable<any> {
   return this.http.get<any>(this.fusekiUrl + '?query=' + encodeURIComponent(this.query));
+}
+
+searchMuseums(term: string): Observable<Museum[]> {
+  if (!term.trim()) {
+    // if not search term, return empty hero array.
+    return of([]);
+  }
+  return this.http.get<Museum[]>(`${this.museumUrl}/?name=${term}`).pipe(
+    tap(_ => console.log(`found museums matching "${term}"`)),
+    catchError(this.handleError<Museum[]>('searchHeroes', []))
+  );
 }
 
 getMuseumHours(name: string): Observable<any> {
@@ -182,4 +194,22 @@ getWikipedia(wikiid:string):Observable<any>{
   console.log(localquery);
   return this.http.get<any>(this.wikiUrl + '?query=' + encodeURIComponent(localquery));
 }
+
+
+
+/**
+   * Handle Http operation that failed.
+   * Let the app continue.
+   * @param operation - name of the operation that failed
+   * @param result - optional value to return as the observable result
+   */
+  private handleError<T> (operation = 'operation', result?: T) {
+    return (error: any): Observable<T> => {
+
+      console.error(error); // log to console
+
+      // Let the app keep running by returning an empty result.
+      return of(result as T);
+    };
+  }
 }

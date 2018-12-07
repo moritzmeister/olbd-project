@@ -1,4 +1,8 @@
-<h2>My Museums</h2>
+<div>
+    <h4>Museum Search</h4>
+<app-museum-search></app-museum-search>
+</div>
+<div>
 <ul class="museums">
   <li *ngFor="let museum of museums">
     <a routerLink="/detail/{{museum.name}}">
@@ -6,3 +10,4 @@
     </a>
   </li>
 </ul>
+</div>

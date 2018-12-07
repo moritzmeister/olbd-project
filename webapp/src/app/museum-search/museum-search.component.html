@@ -1,0 +1,14 @@
+<div id="search-component">
+  <h4>Museum Search</h4>
+
+  <input #searchBox id="search-box" (input)="search(searchBox.value)" />
+</div>
+<div>
+  <ul class="search-result">
+    <li *ngFor="let museum of museums$ | async" >
+      <a routerLink="/detail/{{museum.id}}">
+        {{museum.name}}
+      </a>
+    </li>
+  </ul>
+</div>

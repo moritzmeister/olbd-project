@@ -9,6 +9,7 @@ import { MuseumDetailComponent } from './museum-detail/museum-detail.component';
 import { MessagesComponent } from './messages/messages.component';
 import { AppRoutingModule } from './app-routing.module';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { MuseumSearchComponent } from './museum-search/museum-search.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     MuseumsComponent,
     MuseumDetailComponent,
     MessagesComponent,
-    DashboardComponent
+    DashboardComponent,
+    MuseumSearchComponent
   ],
   imports: [
     BrowserModule,

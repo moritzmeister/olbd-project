@@ -6,7 +6,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { MuseumDetailComponent } from './museum-detail/museum-detail.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
+  { path: '', redirectTo: 'search', pathMatch: 'full' },
   { path: 'search', component: MuseumsComponent },
   { path: 'detail/:name', component: MuseumDetailComponent },
   { path: 'dashboard', component: DashboardComponent }
