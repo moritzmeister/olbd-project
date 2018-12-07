@@ -18,7 +18,6 @@ export class MuseumsComponent implements OnInit {
 
   ngOnInit() {
     this.getMuseums();
-    console.log(this.museums);
   }
 
   onSelect(museum: Museum): void {

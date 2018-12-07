@@ -27,15 +27,12 @@ getMuseums(): Observable<any> {
   return this.http.get<any>(this.fusekiUrl + '?query=' + encodeURIComponent(this.query));
 }
 
-searchMuseums(term: string): Observable<Museum[]> {
-  if (!term.trim()) {
-    // if not search term, return empty hero array.
-    return of([]);
-  }
-  return this.http.get<Museum[]>(`${this.museumUrl}/?name=${term}`).pipe(
-    tap(_ => console.log(`found museums matching "${term}"`)),
-    catchError(this.handleError<Museum[]>('searchHeroes', []))
-  );
+getMuseumsQuarter(name:string): Observable<any>{
+  var a = 'PREFIX schema:<http://schema.org/> PREFIX mam:<http://www.semanticweb.org/museumsandmonumentsmadrid/ontology/> SELECT ?sightname WHERE{?sight a schema:CivicStructure; schema:geo ?geocoordinates; schema:name ?sightname.?geocoordinates schema:address ?address.?address mam:hasQuarter ?quarter.?quarter schema:name "';
+  var c = '"^^<xsd:string>.}';
+  var x = a.concat(name);
+  var localquery = x.concat(c);
+  return this.http.get<any>(this.fusekiUrl + '?query=' + encodeURIComponent(localquery));
 }
 
 getMuseumHours(name: string): Observable<any> {
@@ -55,11 +52,10 @@ getMuseumType(name: string): Observable<any> {
 }
 
 getQuarter(name: string): Observable<any> {
-  var a = 'PREFIX schema: <http://schema.org/> PREFIX mam:<http://www.semanticweb.org/museumsandmonumentsmadrid/ontology/> SELECT ?quarter WHERE {?x a schema:CivicStructure; schema:geo ?geocoordinates; schema:name"';
-  var c = '"^^<xsd:string>.?geocoordinates schema:address ?address. ?address mam:hasQuarter ?quarter.}';
+  var a = 'PREFIX schema: <http://schema.org/> PREFIX mam:<http://www.semanticweb.org/museumsandmonumentsmadrid/ontology/> SELECT ?quartername WHERE {?x a schema:CivicStructure; schema:geo ?geocoordinates; schema:name"';
+  var c = '"^^<xsd:string>.?geocoordinates schema:address ?address. ?address mam:hasQuarter ?quarter. ?quarter schema:name ?quartername.}';
   var x = a.concat(name);
   var localquery = x.concat(c);
-  console.log(localquery);
   return this.http.get<any>(this.fusekiUrl + '?query=' + encodeURIComponent(localquery));
 }
 getQuarterWiki(name: string): Observable<any> {
@@ -67,7 +63,6 @@ getQuarterWiki(name: string): Observable<any> {
   var c = '"^^<xsd:string>.?geocoordinates schema:address ?address. ?address mam:hasQuarter ?quarter. ?quarter owl:sameAs ?quarterwiki.}';
   var x = a.concat(name);
   var localquery = x.concat(c);
-  console.log(localquery);
   return this.http.get<any>(this.fusekiUrl + '?query=' + encodeURIComponent(localquery));
 }
 getMuseumDescription(name: string): Observable<any> {
@@ -131,7 +126,6 @@ getLatitude(name:string): Observable<any> {
   var c = '"^^<xsd:string>. ?geocoordinates schema:latitude ?latitude.}';
   var x = a.concat(name);
   var localquery = x.concat(c);
-  console.log(localquery);
   return this.http.get<any>(this.fusekiUrl + '?query=' + encodeURIComponent(localquery));
 }
 
@@ -140,7 +134,6 @@ getLongitude(name:string): Observable<any> {
   var c = '"^^<xsd:string>. ?geocoordinates schema:longitude ?longitude.}';
   var x = a.concat(name);
   var localquery = x.concat(c);
-  console.log(localquery);
   return this.http.get<any>(this.fusekiUrl + '?query=' + encodeURIComponent(localquery));
 }
 
@@ -188,28 +181,10 @@ getPicture(wikiid: string): Observable<any>{
 getWikipedia(wikiid:string):Observable<any>{
   var a = 'prefix schema: <http://schema.org/> PREFIX wd: <http://www.wikidata.org/entity/> SELECT ?article WHERE {?article schema:about wd:';
   var c = '.?article schema:inLanguage "es". FILTER (SUBSTR(str(?article), 1, 25) = "https://es.wikipedia.org/")}';
-  console.log(wikiid);
   var x = a.concat(wikiid);
   var localquery = x.concat(c);
-  console.log(localquery);
   return this.http.get<any>(this.wikiUrl + '?query=' + encodeURIComponent(localquery));
 }
 
 
-
-/**
-   * Handle Http operation that failed.
-   * Let the app continue.
-   * @param operation - name of the operation that failed
-   * @param result - optional value to return as the observable result
-   */
-  private handleError<T> (operation = 'operation', result?: T) {
-    return (error: any): Observable<T> => {
-
-      console.error(error); // log to console
-
-      // Let the app keep running by returning an empty result.
-      return of(result as T);
-    };
-  }
 }

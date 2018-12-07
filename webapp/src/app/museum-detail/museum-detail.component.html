@@ -3,11 +3,11 @@
 
     <div class="card-header">
 
-    
-          <h3>{{museum.name | uppercase}}<button class="btn btn-primary float-sm-right" (click)="goBack()">go back</button></h3>
-          
 
-      
+          <h3>{{museum.name | uppercase}}<button class="btn btn-primary float-sm-right" (click)="goBack()">go back</button></h3>
+
+
+
     </div>
 
     <img class="card-img-top" src="{{museum.picture}}" alt="Card image cap" height="200">
@@ -16,6 +16,8 @@
       <div *ngIf="museum.type"><span>type of sight: </span>{{museum.type}}</div>
       <div *ngIf="museum.hours"><span>opening hours: </span>{{museum.hours}}</div>
       <div *ngIf="museum.quarter"><span>quarter: </span><a id="link-0" href="{{museum.quarterwiki}}">{{museum.quarter}}</a>
+        <div *ngIf="museum.quarter"><span><a routerLink="/quarter/{{museum.quarter}}">Find all sights in {{museum.quarter}}
+        </a></span>
         <div *ngIf="museum.description">
           <button class="btn btn-secondary" data-toggle="collapse" data-target="#description" aria-expanded="false"
             aria-controls="collapseOne">
