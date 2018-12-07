@@ -23,11 +23,12 @@ export class MuseumsComponent implements OnInit {
     this.selectedMuseum = museum;
   }
 
-getMuseums(): void {
-  this.museumService.getMuseums().subscribe(data => {
-      data.results.bindings.forEach(element => {this.museums.push(new Museum(element.name.value));
+  getMuseums(): void {
+    this.museumService.getMuseums().subscribe(data => {
+      data.results.bindings.forEach(element => {
+        this.museums.push(new Museum(element.name.value));
       });
-  });
-}
+    });
+  }
 
 }
