@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { Museum } from '../museum';
 import { MuseumService } from '../museum.service';
+import { FilterPipe } from '../filter.pipe';
 
 @Component({
   selector: 'app-museums',
