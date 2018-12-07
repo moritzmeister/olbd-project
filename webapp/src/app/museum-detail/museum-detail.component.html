@@ -1,63 +1,63 @@
-
 <div *ngIf="museum">
   <h2>{{museum.name | uppercase}} </h2>
   <div *ngIf="museum.type"><span>type of sight: </span>{{museum.type}}</div>
   <div *ngIf="museum.hours"><span>opening hours: </span>{{museum.hours}}</div>
-  <div *ngIf="museum.quarter"><span>quarter: </span><a id="link-0" href="{{museum.quarterwiki}}">{{museum.quarter}}</a> </div>
+  <div *ngIf="museum.quarter"><span>quarter: </span><a id="link-0" href="{{museum.quarterwiki}}">{{museum.quarter}}</a>
+  </div>
 
   <div *ngIf="museum.description">
-  <button class="btn btn-link" data-toggle="collapse" data-target="#description" aria-expanded="false" aria-controls="collapseOne">
-    description
-  </button>
-  <div class="collapse" id="description">
-  <div class="card-body">
-    <div *ngIf="museum.description">{{museum.description}}</div>
-  </div>
-  </div>
+    <button class="btn btn-link" data-toggle="collapse" data-target="#description" aria-expanded="false" aria-controls="collapseOne">
+      description
+    </button>
+    <div class="collapse" id="description">
+      <div class="card-body">
+        <div *ngIf="museum.description">{{museum.description}}</div>
+      </div>
+    </div>
   </div>
 
   <div *ngIf="museum.telephone"><span>telephone number: </span>{{museum.telephone}}</div>
   <div *ngIf="museum.email"><span>email address: </span>{{museum.email}}</div>
-  <div *ngIf="museum.webpage"><span>webpage: </span> <a id="link-1" href="{{museum.webpage}}">Ayuntamiento de Madrid</a> </div>
+  <div *ngIf="museum.webpage"><span>webpage: </span> <a id="link-1" href="{{museum.webpage}}">Ayuntamiento de Madrid</a>
+  </div>
   <div *ngIf="museum.wikipedia"><a id="link-2" href="{{museum.wikipedia}}">additional information</a> </div>
 
   <div>
-  <button class="btn btn-link" data-toggle="collapse" data-target="#address" aria-expanded="false" aria-controls="collapseOne">
-    address
-  </button>
-  <div class="collapse" id="address">
-  <div class="card-body">
-    <div *ngIf="museum.street">{{museum.street}}</div>
-    <div *ngIf="museum.city">{{museum.zip}} <span> </span>{{museum.city}}</div>
-  </div>
-  </div>
+    <button class="btn btn-link" data-toggle="collapse" data-target="#address" aria-expanded="false" aria-controls="collapseOne">
+      address
+    </button>
+    <div class="collapse" id="address">
+      <div class="card-body">
+        <div *ngIf="museum.street">{{museum.street}}</div>
+        <div *ngIf="museum.city">{{museum.zip}} <span> </span>{{museum.city}}</div>
+      </div>
+    </div>
   </div>
 
   <div *ngIf="museum.latitude"><span>latitude: </span>{{museum.latitude}}</div>
   <div *ngIf="museum.longitude"><span>longitude: </span>{{museum.longitude}}</div>
 
   <div>
-  <button class="btn btn-link" data-toggle="collapse" data-target="#publictransport" aria-expanded="false" aria-controls="collapseOne">
-    public transport
-  </button>
-  <div class="collapse" id="publictransport">
-  <div class="card-body">
-    <div *ngIf="museum.bus"><span>Bus: </span>{{museum.bus}}</div>
-    <div *ngIf="museum.metrostationname"><span>metro station: </span><a id="link-3" href="{{museum.metrostationwiki}}">{{museum.metrostationname}}</a></div>
-    <div *ngIf="museum.metroline"><span>metro lines: </span>{{museum.metroline}}</div>
+    <button class="btn btn-link" data-toggle="collapse" data-target="#publictransport" aria-expanded="false"
+      aria-controls="collapseOne">
+      public transport
+    </button>
+    <div class="collapse" id="publictransport">
+      <div class="card-body">
+        <div *ngIf="museum.bus"><span>Bus: </span>{{museum.bus}}</div>
+        <div *ngIf="museum.metrostationname"><span>metro station: </span><a id="link-3" href="{{museum.metrostationwiki}}">{{museum.metrostationname}}</a></div>
+        <div *ngIf="museum.metroline"><span>metro lines: </span>{{museum.metroline}}</div>
+      </div>
+    </div>
   </div>
-  </div>
-  </div>
-
-
 
 
   <!--
   <div *ngIf="museum.wikiid"><span>Wikidata: </span> {{museum.wikiid}}</div>
   -->
-  <div *ngIf="museum.picture"><img src ="{{museum.picture}}" width="200" height="200" /></div>
+  <div *ngIf="museum.picture"><img src="{{museum.picture}}" width="200" height="200" /></div>
 
   <div>
-  <button (click)="goBack()">go back</button>
+    <button (click)="goBack()">go back</button>
   </div>
 </div>

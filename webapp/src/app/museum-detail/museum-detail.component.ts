@@ -13,7 +13,7 @@ import { MuseumsComponent } from '../museums/museums.component';
 })
 export class MuseumDetailComponent implements OnInit {
   museum: Museum;
-  wikiid : string;
+  wikiid: string;
 
   constructor(
     private route: ActivatedRoute,

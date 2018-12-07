@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <div>
     <h4>Museum Search</h4>
 <app-museum-search></app-museum-search>
@@ -10,4 +11,27 @@
     </a>
   </li>
 </ul>
+=======
+<div class="container">
+
+    <div class="card">
+      <div class="card-header">
+        <h3>Result List</h3>
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <button class="btn btn-outline-secondary" type="button">Search</button>
+            </div>
+            <input type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1">
+          </div>
+          
+      </div>
+      <div class="card-body">
+        <div class="list-group">
+          <a class="list-group-item list-group-item-action" *ngFor="let museum of museums" routerLink="/detail/{{museum.name}}">
+            {{museum.name}}
+          </a>
+        </div>
+      </div>
+    </div>
+>>>>>>> 0b6fda1c1813f2b5fb7e09cbda4965fff0d6b9e8
 </div>

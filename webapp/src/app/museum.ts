@@ -4,7 +4,7 @@ export class Museum {
   hours: string;
   quarter: string;
   qwikiid: string;
-  quarterwiki:string;
+  quarterwiki: string;
   type: string;
   description: string;
   telephone: string;
@@ -18,11 +18,11 @@ export class Museum {
   wikipedia: string;
   wikiid: string;
   picture: string;
-  bus:string;
-  metrostationname:string;
-  metrostationwikiid:string;
-  metrostationwiki:string;
-  metroline:string;
+  bus: string;
+  metrostationname: string;
+  metrostationwikiid: string;
+  metrostationwiki: string;
+  metroline: string;
 
   constructor(name: string) {
     this.name = name;
