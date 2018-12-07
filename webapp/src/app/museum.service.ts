@@ -114,6 +114,24 @@ getZip(name: string): Observable<any> {
   return this.http.get<any>(this.fusekiUrl + '?query=' + encodeURIComponent(localquery));
 }
 
+getLatitude(name:string): Observable<any> {
+  var a = 'PREFIX schema:<http://schema.org/> SELECT ?latitude WHERE {?sight a schema:CivicStructure; schema:geo ?geocoordinates; schema:name "';
+  var c = '"^^<xsd:string>. ?geocoordinates schema:latitude ?latitude.}';
+  var x = a.concat(name);
+  var localquery = x.concat(c);
+  console.log(localquery);
+  return this.http.get<any>(this.fusekiUrl + '?query=' + encodeURIComponent(localquery));
+}
+
+getLongitude(name:string): Observable<any> {
+  var a = 'PREFIX schema:<http://schema.org/> SELECT ?longitude WHERE {?sight a schema:CivicStructure; schema:geo ?geocoordinates; schema:name "';
+  var c = '"^^<xsd:string>. ?geocoordinates schema:longitude ?longitude.}';
+  var x = a.concat(name);
+  var localquery = x.concat(c);
+  console.log(localquery);
+  return this.http.get<any>(this.fusekiUrl + '?query=' + encodeURIComponent(localquery));
+}
+
 getBus(name:string): Observable<any>{
 var a = 'PREFIX schema: <http://schema.org/> PREFIX mam: <http://www.semanticweb.org/museumsandmonumentsmadrid/ontology/> PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> SELECT ?bus WHERE {?sight a schema:CivicStructure. ?sight schema:name "'
 var c =  '"^^<xsd:string>.?sight mam:reachableBy ?transport.?transport a mam:PublicTransport.?trip rdfs:subClassOf ?transport.?trip schema:busNumber ?bus.}'

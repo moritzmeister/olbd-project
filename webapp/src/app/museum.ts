@@ -8,11 +8,13 @@ export class Museum {
   type: string;
   description: string;
   telephone: string;
-  email: stirng;
+  email: string;
   webpage: string;
   street: string;
   zip: string;
   city: string = 'MADRID';
+  latitude:float;
+  longitude:float;
   wikipedia: string;
   wikiid: string;
   picture: string;

@@ -63,6 +63,12 @@ export class MuseumDetailComponent implements OnInit {
     this.museumService.getZip(name)
     .subscribe(data => {data.results.bindings.forEach(element => this.museum.zip = element.zip.value);
     });
+    this.museumService.getLatitude(name)
+    .subscribe(data => {data.results.bindings.forEach(element => this.museum.latitude = element.latitude.value);
+    });
+    this.museumService.getLongitude(name)
+    .subscribe(data => {data.results.bindings.forEach(element => this.museum.longitude = element.longitude.value);
+    });
     this.museumService.getBus(name)
     .subscribe(data => {data.results.bindings.forEach(element => this.museum.bus = element.bus.value);
     });
