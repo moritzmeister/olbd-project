@@ -22,7 +22,7 @@ export class MuseumQuarterComponent implements OnInit {
   }
 
   onSelect(quarter: Quarter): void {
-    this.selectedQuarter.name = quarter;
+    this.selectedQuarter = quarter;
     console.log(this.selectedQuarter.name);
   }
 
