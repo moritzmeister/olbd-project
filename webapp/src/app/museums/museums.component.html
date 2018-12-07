@@ -11,7 +11,7 @@
           </div>
 
       </div>
-      <div class="card-body">
+      <div class="card-body" style="min-height: 550px">
         <div class="list-group">
           <a class="list-group-item list-group-item-action" *ngFor="let museum of museums | filter : searchText" routerLink="/detail/{{museum.name}}">
             {{museum.name}}
