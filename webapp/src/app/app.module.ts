@@ -12,7 +12,9 @@ import { MuseumDetailComponent } from './museum-detail/museum-detail.component';
 import { MessagesComponent } from './messages/messages.component';
 import { AppRoutingModule } from './app-routing.module';
 import { DashboardComponent } from './dashboard/dashboard.component';
+
 import { FilterPipe } from './filter.pipe';
+import { MuseumQuarterComponent } from './museum-quarter/museum-quarter.component';
 
 @NgModule({
   declarations: [
@@ -21,8 +23,8 @@ import { FilterPipe } from './filter.pipe';
     MuseumDetailComponent,
     MessagesComponent,
     DashboardComponent,
-    FilterPipe
-  ],
+    FilterPipe,
+    MuseumQuarterComponent  ],
   imports: [
     BrowserModule,
     FormsModule,

@@ -4,7 +4,7 @@ import { Observable, of } from 'rxjs';
 import { Museum } from './museum';
 import { MessageService } from './message.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { map } from 'rxjs/operators';
+import { catchError, tap, map } from 'rxjs/operators';
 
 
 @Injectable({
@@ -15,6 +15,7 @@ export class MuseumService {
 
   private fusekiUrl = 'http://localhost:3030/MuseumsandMonumentsMadrid/query';
   private wikiUrl = 'https://query.wikidata.org/sparql';
+  private museumUrl = 'http://localhost:4200/search'
 
   constructor(
     private http: HttpClient,
@@ -24,6 +25,14 @@ export class MuseumService {
 query = 'PREFIX http: <http://www.w3.org/2011/http#>prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> prefix owl: <http://www.w3.org/2002/07/owl#> prefix schema: <http://schema.org/> SELECT ?name WHERE { ?x a schema:CivicStructure; schema:name ?name.}';
 getMuseums(): Observable<any> {
   return this.http.get<any>(this.fusekiUrl + '?query=' + encodeURIComponent(this.query));
+}
+
+getMuseumsQuarter(name:string): Observable<any>{
+  var a = 'PREFIX schema:<http://schema.org/> PREFIX mam:<http://www.semanticweb.org/museumsandmonumentsmadrid/ontology/> SELECT ?sightname WHERE{?sight a schema:CivicStructure; schema:geo ?geocoordinates; schema:name ?sightname.?geocoordinates schema:address ?address.?address mam:hasQuarter ?quarter.?quarter schema:name "';
+  var c = '"^^<xsd:string>.}';
+  var x = a.concat(name);
+  var localquery = x.concat(c);
+  return this.http.get<any>(this.fusekiUrl + '?query=' + encodeURIComponent(localquery));
 }
 
 getMuseumHours(name: string): Observable<any> {
@@ -43,11 +52,10 @@ getMuseumType(name: string): Observable<any> {
 }
 
 getQuarter(name: string): Observable<any> {
-  var a = 'PREFIX schema: <http://schema.org/> PREFIX mam:<http://www.semanticweb.org/museumsandmonumentsmadrid/ontology/> SELECT ?quarter WHERE {?x a schema:CivicStructure; schema:geo ?geocoordinates; schema:name"';
-  var c = '"^^<xsd:string>.?geocoordinates schema:address ?address. ?address mam:hasQuarter ?quarter.}';
+  var a = 'PREFIX schema: <http://schema.org/> PREFIX mam:<http://www.semanticweb.org/museumsandmonumentsmadrid/ontology/> SELECT ?quartername WHERE {?x a schema:CivicStructure; schema:geo ?geocoordinates; schema:name"';
+  var c = '"^^<xsd:string>.?geocoordinates schema:address ?address. ?address mam:hasQuarter ?quarter. ?quarter schema:name ?quartername.}';
   var x = a.concat(name);
   var localquery = x.concat(c);
-  console.log(localquery);
   return this.http.get<any>(this.fusekiUrl + '?query=' + encodeURIComponent(localquery));
 }
 getQuarterWiki(name: string): Observable<any> {
@@ -55,7 +63,6 @@ getQuarterWiki(name: string): Observable<any> {
   var c = '"^^<xsd:string>.?geocoordinates schema:address ?address. ?address mam:hasQuarter ?quarter. ?quarter owl:sameAs ?quarterwiki.}';
   var x = a.concat(name);
   var localquery = x.concat(c);
-  console.log(localquery);
   return this.http.get<any>(this.fusekiUrl + '?query=' + encodeURIComponent(localquery));
 }
 getMuseumDescription(name: string): Observable<any> {
@@ -119,7 +126,6 @@ getLatitude(name:string): Observable<any> {
   var c = '"^^<xsd:string>. ?geocoordinates schema:latitude ?latitude.}';
   var x = a.concat(name);
   var localquery = x.concat(c);
-  console.log(localquery);
   return this.http.get<any>(this.fusekiUrl + '?query=' + encodeURIComponent(localquery));
 }
 
@@ -128,7 +134,6 @@ getLongitude(name:string): Observable<any> {
   var c = '"^^<xsd:string>. ?geocoordinates schema:longitude ?longitude.}';
   var x = a.concat(name);
   var localquery = x.concat(c);
-  console.log(localquery);
   return this.http.get<any>(this.fusekiUrl + '?query=' + encodeURIComponent(localquery));
 }
 
@@ -176,10 +181,10 @@ getPicture(wikiid: string): Observable<any>{
 getWikipedia(wikiid:string):Observable<any>{
   var a = 'prefix schema: <http://schema.org/> PREFIX wd: <http://www.wikidata.org/entity/> SELECT ?article WHERE {?article schema:about wd:';
   var c = '.?article schema:inLanguage "es". FILTER (SUBSTR(str(?article), 1, 25) = "https://es.wikipedia.org/")}';
-  console.log(wikiid);
   var x = a.concat(wikiid);
   var localquery = x.concat(c);
-  console.log(localquery);
   return this.http.get<any>(this.wikiUrl + '?query=' + encodeURIComponent(localquery));
 }
+
+
 }

@@ -219,3 +219,18 @@ WHERE {
   ?geocoordinates schema:address ?address.
   ?address mam:hasQuarter <http://www.semanticweb.org/museumsandmonumentsmadrid/resource/SOL>.
 }
+
+######
+PREFIX schema:<http://schema.org/>
+PREFIX mam:<http://www.semanticweb.org/museumsandmonumentsmadrid/ontology/>
+
+SELECT ?sightname
+WHERE{
+  ?sight a schema:CivicStructure;
+  	schema:geo ?geocoordinates;
+   schema:name ?sightname.
+  ?geocoordinates schema:address ?address.
+  ?address mam:hasQuarter ?quarter.
+  ?quarter schema:name "SOL"^^<xsd:string>.
+}
+

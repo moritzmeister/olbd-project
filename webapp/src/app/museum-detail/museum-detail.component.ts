@@ -15,10 +15,6 @@ export class MuseumDetailComponent implements OnInit {
   museum: Museum;
   wikiid: string;
 
-  title: string = 'My first AGM project';
-  lat: number = 51.678418;
-  lng: number = 7.809007;
-
   constructor(
     private route: ActivatedRoute,
     private museumService: MuseumService,
@@ -40,7 +36,7 @@ export class MuseumDetailComponent implements OnInit {
     .subscribe(data => {data.results.bindings.forEach(element => this.museum.type = element.type.value.substring(62));
     });
     this.museumService.getQuarter(name)
-    .subscribe(data => {data.results.bindings.forEach(element => this.museum.quarter = element.quarter.value.substring(62));
+    .subscribe(data => {data.results.bindings.forEach(element => this.museum.quarter = element.quartername.value);
     });
     this.museumService.getQuarterWiki(name)
     .subscribe(data => {
