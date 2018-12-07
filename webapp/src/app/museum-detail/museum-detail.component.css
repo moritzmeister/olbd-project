@@ -2,3 +2,7 @@
   height: 15rem;
   object-fit: cover;
 }
+
+agm-map {
+  height: 300px;
+}

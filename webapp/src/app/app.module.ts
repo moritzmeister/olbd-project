@@ -3,6 +3,9 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
+import { CommonModule } from '@angular/common';
+import { AgmCoreModule } from '@agm/core';
+
 import { AppComponent } from './app.component';
 import { MuseumsComponent } from './museums/museums.component';
 import { MuseumDetailComponent } from './museum-detail/museum-detail.component';
@@ -24,7 +27,10 @@ import { FilterPipe } from './filter.pipe';
     BrowserModule,
     FormsModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyC-ux8l0BfsRn5_HTmjg7HvIKFckREssCA'
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]
