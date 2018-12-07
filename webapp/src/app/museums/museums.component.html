@@ -7,13 +7,13 @@
             <div class="input-group-prepend">
               <button class="btn btn-outline-secondary" type="button">Search</button>
             </div>
-            <input type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1">
+            <input [(ngModel)]="searchText" type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1">
           </div>
           
       </div>
       <div class="card-body">
         <div class="list-group">
-          <a class="list-group-item list-group-item-action" *ngFor="let museum of museums" routerLink="/detail/{{museum.name}}">
+          <a class="list-group-item list-group-item-action" *ngFor="let museum of museums | filter : searchText" routerLink="/detail/{{museum.name}}">
             {{museum.name}}
           </a>
         </div>
