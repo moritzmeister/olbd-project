@@ -34,6 +34,9 @@
     </div>
   </div>
 
+  <div *ngIf="museum.latitude"><span>latitude: </span>{{museum.latitude}}</div>
+  <div *ngIf="museum.longitude"><span>longitude: </span>{{museum.longitude}}</div>
+
   <div>
     <button class="btn btn-link" data-toggle="collapse" data-target="#publictransport" aria-expanded="false"
       aria-controls="collapseOne">

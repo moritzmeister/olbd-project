@@ -13,6 +13,8 @@ export class Museum {
   street: string;
   zip: string;
   city: string = 'MADRID';
+  latitude:number;
+  longitude:number;
   wikipedia: string;
   wikiid: string;
   picture: string;
