@@ -95,7 +95,8 @@ export class MuseumDetailComponent implements OnInit {
     .subscribe(data => {data.results.bindings.forEach(element => this.museum.metrostationwikiid = element.metrostationwiki.value.substring(30));
       this.museumService.getWikipedia(this.museum.metrostationwikiid)
       .subscribe(data5 => {data5.results.bindings.forEach(element => console.log(this.museum.metrostationwiki = element.article.value));
-    });});
+    });
+  });
     this.museumService.getMetroStationName(name)
     .subscribe(data => {data.results.bindings.forEach(element => this.museum.metrostationname = element.metrostationname.value);
     });

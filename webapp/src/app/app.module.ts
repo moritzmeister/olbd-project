@@ -15,6 +15,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 
 import { FilterPipe } from './filter.pipe';
 import { MuseumQuarterComponent } from './museum-quarter/museum-quarter.component';
+import { AboutComponent } from './about/about.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { MuseumQuarterComponent } from './museum-quarter/museum-quarter.componen
     MessagesComponent,
     DashboardComponent,
     FilterPipe,
-    MuseumQuarterComponent  ],
+    MuseumQuarterComponent,
+    AboutComponent  ],
   imports: [
     BrowserModule,
     FormsModule,

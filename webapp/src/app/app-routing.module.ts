@@ -5,10 +5,12 @@ import { MuseumsComponent } from './museums/museums.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { MuseumDetailComponent } from './museum-detail/museum-detail.component';
 import { MuseumQuarterComponent} from './museum-quarter/museum-quarter.component';
+import { AboutComponent } from './about/about.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/search', pathMatch: 'full' },
   { path: 'search', component: MuseumsComponent },
+  { path: 'about', component: AboutComponent },
   { path: 'detail/:name', component: MuseumDetailComponent },
   { path: 'quarter/:name', component: MuseumQuarterComponent },
   { path: 'dashboard', component: DashboardComponent }
