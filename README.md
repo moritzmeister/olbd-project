@@ -7,11 +7,14 @@ We used open data published by the Ayuntamiento de Madrid on [Museums](https://d
 <br>The result is a web application in which you can explore the monuments and museums of Madrid, navigate based on context and find additional information.
 
 For running our web app locally on your machine please follow these steps:
+
 0) Clone our repository
 1) Install [Apache Jena Fuseki](https://jena.apache.org/download/index.cgi) and start it locally: ```./fuseki-server --update --mem /ds```
 2) Import the RDF file (V9) into Fuseki.
 3) Make sure to have angular and node.js installed. [More infos in this tutorial](https://angular.io/guide/quickstart)
-4) Run the webapp: ```ng serve --open```
+4) ```cd webapp``` into the webapp directory
+5) ```npm install``` to install the dependencies
+6) Run the webapp: ```ng serve --open```
 
 We hope you enjoy our linked data application - if you have any questions or feedback, do not hesitate to contact us.
 
