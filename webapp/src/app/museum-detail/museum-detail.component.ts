@@ -6,6 +6,7 @@ import { AgmMap } from '@agm/core';
 
 import { MuseumService } from '../museum.service';
 import { MuseumsComponent } from '../museums/museums.component';
+import { MuseumQuarterComponent } from '../museum-quarter/museum-quarter.component';
 
 @Component({
   selector: 'app-museum-detail',

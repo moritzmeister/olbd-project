@@ -26,6 +26,11 @@
           <span><strong>Quarter: </strong></span>
           <a id="link-0" href="{{museum.quarterwiki}}">{{museum.quarter}}</a>
         </div>
+        <div *ngIf="museum.quarter">
+          <a id="link-2" routerLink="/detail/{{museum.quarter}}">
+            Find sights in the area!
+          </a>
+        </div>
         <div *ngIf="museum.telephone">
           <span><strong>Telephone number: </strong></span>
           {{museum.telephone}}

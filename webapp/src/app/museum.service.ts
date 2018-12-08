@@ -32,6 +32,7 @@ getMuseumsQuarter(name:string): Observable<any>{
   var c = '"^^<xsd:string>.}';
   var x = a.concat(name);
   var localquery = x.concat(c);
+  console.log(localquery);
   return this.http.get<any>(this.fusekiUrl + '?query=' + encodeURIComponent(localquery));
 }
 
