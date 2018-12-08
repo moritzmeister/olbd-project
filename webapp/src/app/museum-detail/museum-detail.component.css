@@ -6,3 +6,7 @@
 agm-map {
   height: 300px;
 }
+
+.btn-secondary {
+  margin-left: 5px;
+}

@@ -1,7 +1,8 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ViewChild } from '@angular/core';
 import { Museum } from '../museum';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
+import { AgmMap } from '@agm/core';
 
 import { MuseumService } from '../museum.service';
 import { MuseumsComponent } from '../museums/museums.component';
@@ -15,6 +16,9 @@ export class MuseumDetailComponent implements OnInit {
   museum: Museum;
   wikiid: string;
 
+  lat: Number = 40.4227389;
+  long: Number = -3.7130504;
+
   constructor(
     private route: ActivatedRoute,
     private museumService: MuseumService,
@@ -22,7 +26,16 @@ export class MuseumDetailComponent implements OnInit {
 
   ngOnInit(): void {
     this.getMuseum();
+    console.log(this.lat);
+    console.log(this.long);
+  }
 
+  updatelat(lat: Number): void {
+    this.lat = lat;
+  }
+
+  updatelong(long: Number): void {
+    this.long = long;
   }
 
   getMuseum(): void {
@@ -64,10 +77,15 @@ export class MuseumDetailComponent implements OnInit {
     .subscribe(data => {data.results.bindings.forEach(element => this.museum.zip = element.zip.value);
     });
     this.museumService.getLatitude(name)
-    .subscribe(data => {data.results.bindings.forEach(element => this.museum.latitude = element.latitude.value);
+    .subscribe(data => {data.results.bindings.forEach(element => {this.museum.latitude = element.latitude.value;
+      this.updatelat(element.latitude.value);
+    });
     });
     this.museumService.getLongitude(name)
-    .subscribe(data => {data.results.bindings.forEach(element => this.museum.longitude = element.longitude.value);
+    .subscribe(data => {data.results.bindings.forEach(element => {this.museum.longitude = element.longitude.value;
+      console.log(element.longitude.value);
+      this.updatelong(element.longitude.value);
+    });
     });
     this.museumService.getBus(name)
     .subscribe(data => {data.results.bindings.forEach(element => this.museum.bus = element.bus.value);
